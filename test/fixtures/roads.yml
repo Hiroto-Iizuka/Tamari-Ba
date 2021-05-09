@@ -1,0 +1,49 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  origin_latitude: 1.5
+  origin_longitude: 1.5
+  via_latitude_1: 1.5
+  via_longitude_1: 1.5
+  via_latitude_2: 1.5
+  via_longitude_2: 1.5
+  via_latitude_3: 1.5
+  via_longitude_3: 1.5
+  via_latitude_4: 1.5
+  via_longitude_4: 1.5
+  via_latitude_5: 1.5
+  via_longitude_5: 1.5
+  via_latitude_6: 1.5
+  via_longitude_6: 1.5
+  via_latitude_7: 1.5
+  via_longitude_7: 1.5
+  via_latitude_8: 1.5
+  via_longitude_8: 1.5
+  destination_latitude: 1.5
+  destination_longitude: 1.5
+  description: MyString
+
+two:
+  title: MyString
+  origin_latitude: 1.5
+  origin_longitude: 1.5
+  via_latitude_1: 1.5
+  via_longitude_1: 1.5
+  via_latitude_2: 1.5
+  via_longitude_2: 1.5
+  via_latitude_3: 1.5
+  via_longitude_3: 1.5
+  via_latitude_4: 1.5
+  via_longitude_4: 1.5
+  via_latitude_5: 1.5
+  via_longitude_5: 1.5
+  via_latitude_6: 1.5
+  via_longitude_6: 1.5
+  via_latitude_7: 1.5
+  via_longitude_7: 1.5
+  via_latitude_8: 1.5
+  via_longitude_8: 1.5
+  destination_latitude: 1.5
+  destination_longitude: 1.5
+  description: MyString

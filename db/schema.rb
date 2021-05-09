@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_09_131221) do
+ActiveRecord::Schema.define(version: 2021_05_09_212524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "roads", force: :cascade do |t|
+    t.string "title"
+    t.float "origin_latitude"
+    t.float "origin_longitude"
+    t.float "via_latitude_1"
+    t.float "via_longitude_1"
+    t.float "via_latitude_2"
+    t.float "via_longitude_2"
+    t.float "via_latitude_3"
+    t.float "via_longitude_3"
+    t.float "via_latitude_4"
+    t.float "via_longitude_4"
+    t.float "via_latitude_5"
+    t.float "via_longitude_5"
+    t.float "via_latitude_6"
+    t.float "via_longitude_6"
+    t.float "via_latitude_7"
+    t.float "via_longitude_7"
+    t.float "via_latitude_8"
+    t.float "via_longitude_8"
+    t.float "destination_latitude"
+    t.float "destination_longitude"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
