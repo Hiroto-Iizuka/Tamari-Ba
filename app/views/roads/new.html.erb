@@ -1,2 +1,6 @@
-<h1>Roads#new</h1>
-<p>Find me in app/views/roads/new.html.erb</p>
+<p>新規投稿</p>
+<%= form_with model: @road, local: true do |f| %>
+  <p>タイトル:<%= f.text_field :title %></p>
+  <p>コメント:<%= f.text_field :description %></p>
+  <%= f.submit "投稿" %>
+<% end %>
