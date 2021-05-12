@@ -15,9 +15,12 @@ class RoadsController < ApplicationController
   end
 
   def edit
+    @road = Road.find(params[:id])
   end
 
   def update
+    road = Road.find(params[:id])
+    road.update(road_params)
   end
 
   def destroy

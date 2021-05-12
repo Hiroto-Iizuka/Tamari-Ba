@@ -5,5 +5,6 @@
     <%= road.title %>
     <%= road.description %>
     <%= link_to "削除", road_path(road), method: :delete, data: {confirm: "削除しますか？"} %>
+    <%= link_to "編集", edit_road_path(road) %>
   </p>
 <% end %>
