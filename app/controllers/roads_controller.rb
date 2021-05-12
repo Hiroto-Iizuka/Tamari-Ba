@@ -21,6 +21,8 @@ class RoadsController < ApplicationController
   end
 
   def destroy
+    road = Road.find(params[:id])
+    road.destroy
   end
 
 end
