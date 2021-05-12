@@ -1,2 +1,5 @@
-<h1>Roads#edit</h1>
-<p>Find me in app/views/roads/edit.html.erb</p>
+<p>更新</p>
+<%= form_with model: @road, local: true do |f| %>
+  <p>タイトル:<%= f.text_field :title %></p>
+  <p>コメント:<%= f.text_field :description %>d</p>
+<% end %>

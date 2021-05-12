@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependet_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      road: ルート
+    attributes:
+      road:
+      id: ID
+      created_at: 登録日時
+      updated_at: 更新日時
