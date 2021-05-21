@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  get 'users/show' => 'users#show'
   root :to => 'home#index'
 
   resources :roads, only: [:index, :new, :create, :show, :edit, :destroy]
