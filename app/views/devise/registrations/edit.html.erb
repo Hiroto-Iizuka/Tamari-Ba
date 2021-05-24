@@ -20,7 +20,10 @@
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <label><%= f.radio_button :gender, "0" %> 男性 </label>
+    <label><%= f.radio_button :gender, "1" %> 女性 </label>
+    <label><%= f.radio_button :gender, "2" %> その他 </label>
+    <label><%= f.radio_button :gender, "9" %> 答えたくない </label>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -31,14 +34,18 @@
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %>文字以上</em>
+      <em>＊<%= @minimum_password_length %>文字以上</em>
     <% end %>
   </div>
 
   <div class="field">
     <%= f.label :bike_type %><br />
-    <%= f.text_field :bike_type %>
+    <label><%= f.radio_button :bike_type, "ネイキッド" %> ネイキッド </label>
+    <label><%= f.radio_button :bike_type, "SS" %> SS </label>
+    <label><%= f.radio_button :bike_type, "クルーザー" %> クルーザー </label>
+    <label><%= f.radio_button :bike_type, "オフロード" %> オフロード </label>
+    <label><%= f.radio_button :bike_type, "原付" %> 原付 </label>
+    <label><%= f.radio_button :bike_type, "スクーター" %> スクーター </label>
   </div>
 
   <div class="field">
@@ -58,7 +65,8 @@
 
   <div class="field">
     <%= f.label :through %><br />
-    <%= f.text_field :through %>
+    <label><%= f.radio_button :through, "false" %> 不可 </label>
+    <label><%= f.radio_button :through, "true" %> 可 </label>
   </div>
 
   <div class="actions">
