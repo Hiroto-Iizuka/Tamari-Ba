@@ -22,9 +22,14 @@ ja:
         current_password: "現在のパスワード"
         name: 名前
         email: "メールアドレス"
+        age: "年齢"
+        gender: "性別"
         password: "パスワード"
-        password_confirmation: "確認用パスワード"
-        remember_me: "次回から自動的にログイン"
+        bike_type: "車種"
+        bike_name: "愛車名"
+        engine_size: "排気量"
+        experience_years: "バイク歴"
+        through: "すり抜け可否"
     models:
       user: "ユーザ"
   devise:
