@@ -11,7 +11,7 @@ class RoadsController < ApplicationController
   end
 
   def create
-    Road.create(@road)
+    Road.create(road_params)
   end
 
   def edit
@@ -28,4 +28,8 @@ class RoadsController < ApplicationController
     road.destroy
   end
 
+  private
+  def road_params
+    params.require(:road).permit(:title, :description)
+  end
 end
