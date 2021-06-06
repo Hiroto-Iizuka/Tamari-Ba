@@ -8,29 +8,48 @@
   }
 </style>
 
-<script>
-  var map;
-  function initMap() {
-    // HMTL上にGoogle Mapsを表示
-    var target = document.getElementById('map');
-    var empire = {lat: 35.6809591, lng: 139.7673068};
-    map = new google.maps.Map(target, {
-      center: empire,
-      zoom: 14
-    });
+<body>
+  <div id="map"></div>
+  <ul>
+    <li>lat: <span id="lat"></span></li>
+    <li>lng: <span id="lng"></span></li>
+  </ul>
+  <script>
+    function initMap() {
 
-    // クリックした箇所にマーカーを設置
-    map.addListener('click', (e) => {
+      // マップの初期化
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: {lat: 36.38992, lng: 139.06065}
+      });
+
+      // クリックイベントを追加
+      map.addListener('click', function(e) {
+        getClickLatLng(e.latLng, map);
+      });
+    }
+
+    function getClickLatLng(lat_lng, map) {
+
+      // 座標を表示
+      document.getElementById('lat').textContent = lat_lng.lat();
+      document.getElementById('lng').textContent = lat_lng.lng();
+
+      // マーカーを設置
       var marker = new google.maps.Marker({
-        position: e.latLng,
+        position: lat_lng,
         map: map,
-        title: e.latLng.toString(),
         animation: google.maps.Animation.DROP
-    });
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
+      });
+
+      // 座標の中心をずらす
+      map.panTo(lat_lng);
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
+</body>
+
+
 <%= form_with model: @road, local: true do |f| %>
   <p>タイトル:<%= f.text_field :title %></p>
   <p>コメント:<%= f.text_field :description %></p>
