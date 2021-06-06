@@ -1,2 +1,3 @@
 class Road < ApplicationRecord
+
 end
