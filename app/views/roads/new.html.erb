@@ -1,42 +1,53 @@
 <p>新規投稿</p>
 <h2>Google Maps</h2>
-<div id='map'></div>
+<div id="map"></div>
 
-<style>
-  #map {
-    height: 400px;
+<%= Gon::Base.render_data %>
+
+<ul>
+  <li>lat: <input id="lat"></li>
+  <li>lng: <input id="lng"></li>
+</ul>
+
+<%= form_with model: @road, local: true do |f| %>
+  <p>タイトル:<%= f.text_field :title %></p>
+  <p>コメント:<%= f.text_field :description %></p>
+  <%= f.submit "投稿" %>
+<% end %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
+
+<script>
+  let marker = [];
+  let markerData = gon.roads;
+
+  function initMap() {
+
+    // マップの初期化
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: {lat: 36.38992, lng: 139.06065}
+    });
+
+    // クリックイベントを追加
+    map.addListener('click', function(e) {
+      getClickLatLng(e.latLng, map);
+    });
   }
-</style>
 
-<body>
-  <div id="map"></div>
-  <ul>
-    <li>lat: <span id="lat"></span></li>
-    <li>lng: <span id="lng"></span></li>
-  </ul>
-  <script>
-    function initMap() {
+  // マーカーの設置、座標の取得
+  function getClickLatLng(lat_lng, map) {
 
-      // マップの初期化
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: {lat: 36.38992, lng: 139.06065}
+    for (var i = 0; i < markerData.length; i++) {
+      let id = markerData[i]['id']
+      // 各地点の座標を表示
+      markerLatLng = new google.maps.LatLng({
+        lat: markerData[i]['latitude'],
+        lng: markerData[i]['longitude']
       });
 
-      // クリックイベントを追加
-      map.addListener('click', function(e) {
-        getClickLatLng(e.latLng, map);
-      });
-    }
-
-    function getClickLatLng(lat_lng, map) {
-
-      // 座標を表示
-      document.getElementById('lat').textContent = lat_lng.lat();
-      document.getElementById('lng').textContent = lat_lng.lng();
-
-      // マーカーを設置
-      var marker = new google.maps.Marker({
+      // 複数マーカーを設置
+      marker[i] = new google.maps.Marker({
         position: lat_lng,
         map: map,
         animation: google.maps.Animation.DROP
@@ -45,13 +56,13 @@
       // 座標の中心をずらす
       map.panTo(lat_lng);
     }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
-</body>
+  }
+    
+</script>
 
 
-<%= form_with model: @road, local: true do |f| %>
-  <p>タイトル:<%= f.text_field :title %></p>
-  <p>コメント:<%= f.text_field :description %></p>
-  <%= f.submit "投稿" %>
-<% end %>
+<style>
+  #map {
+    height: 400px;
+  }
+</style>

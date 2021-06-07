@@ -15,6 +15,7 @@ gem 'devise'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'dotenv-rails'
+gem 'gon'
 
 group :development, :test do
   gem 'pry-rails'
