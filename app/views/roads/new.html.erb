@@ -1,7 +1,7 @@
 <p>新規投稿</p>
 <h2>Google Maps</h2>
 <div id="map"></div>
-
+<div id="input-form"></div>
 <%= Gon::Base.render_data %>
 
 <ul>
@@ -18,46 +18,45 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
 
 <script>
-  let marker = [];
-  let markerData = gon.roads;
-
-  function initMap() {
-
-    // マップの初期化
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 13,
-      center: {lat: 36.38992, lng: 139.06065}
-    });
-
-    // クリックイベントを追加
-    map.addListener('click', function(e) {
-      getClickLatLng(e.latLng, map);
-    });
+var app = new Vue({
+  el: "#input-form",
+  data: {
+    adrs_list: []
   }
+});
 
-  // マーカーの設置、座標の取得
-  function getClickLatLng(lat_lng, map) {
 
-    for (var i = 0; i < markerData.length; i++) {
-      let id = markerData[i]['id']
-      // 各地点の座標を表示
-      markerLatLng = new google.maps.LatLng({
-        lat: markerData[i]['latitude'],
-        lng: markerData[i]['longitude']
-      });
 
-      // 複数マーカーを設置
-      marker[i] = new google.maps.Marker({
-        position: lat_lng,
-        map: map,
-        animation: google.maps.Animation.DROP
-      });
+// マップの初期化
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 13,
+  center: {lat: 43.0553626, lng: 141.341062},
+  mapTypeId: 'roadmap'
+});
 
-      // 座標の中心をずらす
-      map.panTo(lat_lng);
+// クリックイベントを追加
+map.addListener('click', function(e){
+  map.panTo(e.latLng);
+  getAddress(e.latLng);
+});
+
+function getAddress(latlng) {
+  var geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({
+    latLng: latlng
+  }, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[0].geometry) {
+        var address = results[0].formatted_address.replace(/^日本(、|,)/, '');
+        app.adrs_list.push({address: address, lat: latlng.lat(), lng: latlng.lng(), comment: ""});
+        var marker = new google.maps.Marker({ position: latlng, map: map, title: address, animation: google.maps.Animation.DROP });
+      }
+    } else {
+      app.adrs_list.push({address: "", lat: latlng.lat(), lng: latlng.lng(), comment: status});
     }
-  }
-    
+  });
+}    
 </script>
 
 
