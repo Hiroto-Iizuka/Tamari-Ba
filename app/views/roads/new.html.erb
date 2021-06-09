@@ -14,10 +14,10 @@
   <p>コメント:<%= f.text_field :description %></p>
   <%= f.submit "投稿" %>
 <% end %>
-
+<%= javascript_pack_tag 'hello_vue' %>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
 
-<script>
+<%# <script>
 var app = new Vue({
   el: "#input-form",
   data: {
@@ -64,4 +64,4 @@ function getAddress(latlng) {
   #map {
     height: 400px;
   }
-</style>
+</style> %>
