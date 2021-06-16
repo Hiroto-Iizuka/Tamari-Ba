@@ -1,57 +1,82 @@
 <p>新規投稿</p>
 <h2>Google Maps</h2>
-<div id='map'></div>
+<div id="map"></div>
+<%= Gon::Base.render_data %>
 
-<style>
-  #map {
-    height: 400px;
-  }
-</style>
-
-<body>
-  <div id="map"></div>
-  <ul>
-    <li>lat: <span id="lat"></span></li>
-    <li>lng: <span id="lng"></span></li>
-  </ul>
-  <script>
-    function initMap() {
-
-      // マップの初期化
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: {lat: 36.38992, lng: 139.06065}
-      });
-
-      // クリックイベントを追加
-      map.addListener('click', function(e) {
-        getClickLatLng(e.latLng, map);
-      });
-    }
-
-    function getClickLatLng(lat_lng, map) {
-
-      // 座標を表示
-      document.getElementById('lat').textContent = lat_lng.lat();
-      document.getElementById('lng').textContent = lat_lng.lng();
-
-      // マーカーを設置
-      var marker = new google.maps.Marker({
-        position: lat_lng,
-        map: map,
-        animation: google.maps.Animation.DROP
-      });
-
-      // 座標の中心をずらす
-      map.panTo(lat_lng);
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
-</body>
-
+<ul>
+  <li>origin-lat: <input id="o-lat"></li>
+  <li>origin-lng: <input id="o-lng"></li>
+  <li>via-lat1: <input id="via-lat1"></li>
+  <li>via-lng1: <input id="via-lng1"></li>
+  <li>via-lat2: <input id="via-lat2"></li>
+  <li>via-lng2: <input id="via-lng2"></li>
+  <li>via-lat3: <input id="via-lat3"></li>
+  <li>via-lng3: <input id="via-lng3"></li>
+  <li>via-lat4: <input id="via-lat4"></li>
+  <li>via-lng4: <input id="via-lng4"></li>
+  <li>via-lat5: <input id="via-lat5"></li>
+  <li>via-lng5: <input id="via-lng5"></li>
+  <li>via-lat6: <input id="via-lat6"></li>
+  <li>via-lng6: <input id="via-lng6"></li>
+  <li>via-lat7: <input id="via-lat7"></li>
+  <li>via-lng7: <input id="via-lng7"></li>
+  <li>via-lat8: <input id="via-lat8"></li>
+  <li>via-lng8: <input id="via-lng8"></li>
+  <li>destination-lat: <input id="d-lat"></li>
+  <li>destination-lng: <input id="d-lng"></li>
+</ul>
 
 <%= form_with model: @road, local: true do |f| %>
   <p>タイトル:<%= f.text_field :title %></p>
   <p>コメント:<%= f.text_field :description %></p>
   <%= f.submit "投稿" %>
 <% end %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ1l7i7xvSu9yobPClzYx2dPDu_BhS2JQ&callback=initMap" async defer></script>
+<script src="../app/javascript/packs/roads_vue.js"></script>
+
+<script>
+
+function initMap() {
+  // 初期マップ
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 36.38992, lng:139.060065},
+    zoom:12,
+    gestureHandling: 'auto',
+    mapTypeControl: false
+  });
+
+  map.addListener('click', function(e) {
+    map.panTo(e.latLng)
+    getClickLatLng(e.latLng);
+  });
+
+  function getClickLatLng(latlng) {
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({
+      latLng: latlng
+    }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[0].geometry) {
+          var address = results[0].formatted_address.replace(/^日本(、|,)/, '');
+          app.adrs_list.push({address: address, lat: latlng.lat(), lng: latlng(), comment: ""});
+          var marker = new google.maps.Marker({ position: latlng, map: map, title: address, animation: google.maps.Animation.DROP});
+        }
+      } else {
+        app.adrs_list.push({address: "", lat: latlng.lat(), lng: latlng.lng(), comment: status});
+      }
+    });
+  }
+}
+
+</script>
+
+
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
+
