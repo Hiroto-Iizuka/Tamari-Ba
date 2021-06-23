@@ -1,1 +1,1 @@
-import './roads_vue';
+require('./map');
