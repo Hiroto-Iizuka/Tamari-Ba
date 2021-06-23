@@ -1,7 +1,6 @@
 <p>新規投稿</p>
 <h2>Google Maps</h2>
 <div id="map"></div>
-<%= Gon::Base.render_data %>
 
 <div id="input-form">
   <ul v-for="val in adrs_list">
@@ -41,8 +40,8 @@
 <% end %>
 
 
+<%# vueファイルを読み込み %>
 <script src="https://unpkg.com/vue"></script>
-<%# <%= javascript_pack_tag 'roads_vue' %>
 
 <script>
 var app = {};
@@ -58,17 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
 var map = {};
 var directionsDisplay = {};
 var directionsService = {};
+
+const tokyoStationLat = 35.6809591
+const tokyoStationLng = 139.7673068
+
 function initMap() {
   // 初期マップ
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 36.38992, lng:139.060065},
+    center: {lat: tokyoStationLat, lng: tokyoStationLng},
     zoom:12,
-    gestureHandling: 'auto',
     mapTypeControl: false
   });
 
+  // クリックしたときに関数を実行
   map.addListener('click', function(e) {
-    map.panTo(e.latLng);
     getClickLatLng(e.latLng);
   });
   var rendererOptions = {
@@ -79,7 +81,7 @@ function initMap() {
 }
 
 
-
+// 住所、座標を取得
 function getClickLatLng(latlng) {
   var geocoder = new google.maps.Geocoder();
 
@@ -98,6 +100,7 @@ function getClickLatLng(latlng) {
   });
 }
 
+// ピンをつなぐルートを検索
 function search() {
   var points = $("ul");
 

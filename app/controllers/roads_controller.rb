@@ -8,7 +8,6 @@ class RoadsController < ApplicationController
 
   def new
     @road = Road.new
-    gon.roads = Road.all
   end
 
   def create
