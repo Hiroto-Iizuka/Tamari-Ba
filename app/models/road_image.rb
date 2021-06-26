@@ -1,0 +1,2 @@
+class RoadImage < ApplicationRecord
+end

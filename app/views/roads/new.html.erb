@@ -9,29 +9,6 @@
   </ul>
 </div>
 
-<button onclick="search()">ルート検索</button>
-<%# <ul>
-  <li>origin-lat: <input id="o-lat"></li>
-  <li>origin-lng: <input id="o-lng"></li>
-  <li>via-lat1: <input id="via-lat1"></li>
-  <li>via-lng1: <input id="via-lng1"></li>
-  <li>via-lat2: <input id="via-lat2"></li>
-  <li>via-lng2: <input id="via-lng2"></li>
-  <li>via-lat3: <input id="via-lat3"></li>
-  <li>via-lng3: <input id="via-lng3"></li>
-  <li>via-lat4: <input id="via-lat4"></li>
-  <li>via-lng4: <input id="via-lng4"></li>
-  <li>via-lat5: <input id="via-lat5"></li>
-  <li>via-lng5: <input id="via-lng5"></li>
-  <li>via-lat6: <input id="via-lat6"></li>
-  <li>via-lng6: <input id="via-lng6"></li>
-  <li>via-lat7: <input id="via-lat7"></li>
-  <li>via-lng7: <input id="via-lng7"></li>
-  <li>via-lat8: <input id="via-lat8"></li>
-  <li>via-lng8: <input id="via-lng8"></li>
-  <li>destination-lat: <input id="d-lat"></li>
-  <li>destination-lng: <input id="d-lng"></li>
-</ul> %>
 
 <%= form_with model: @road, local: true do |f| %>
   <p>タイトル:<%= f.text_field :title %></p>
