@@ -2,12 +2,11 @@
 <h2>Google Maps</h2>
 <div id="map"></div>
 
-<div id="input-form">
+
   <ul v-for="val in adrs_list">
-    <li>origin-lat: <input id="o-lat" v-bind:value="val.lat"></li>
-    <li>origin-lng: <input id="o-lng" v-bind:value="val.lng"></li>
+    <li>緯度: <span id="lat"></span></li>
+    <li>経度: <span id="lng"></span></li>
   </ul>
-</div>
 
 
 <%= form_with model: @road, local: true do |f| %>
@@ -17,24 +16,8 @@
 <% end %>
 
 
-<%# vueファイルを読み込み %>
-<script src="https://unpkg.com/vue"></script>
-
 <script>
-var app = {};
-document.addEventListener('DOMContentLoaded', () => {
-  app = new Vue({
-    el: "#input-form",
-    data: {
-      adrs_list: []
-    }
-  });
-});
-
 var map = {};
-var directionsDisplay = {};
-var directionsService = {};
-
 const tokyoStationLat = 35.6809591
 const tokyoStationLng = 139.7673068
 
@@ -48,76 +31,27 @@ function initMap() {
 
   // クリックしたときに関数を実行
   map.addListener('click', function(e) {
-    getClickLatLng(e.latLng);
-  });
-  var rendererOptions = {
-    suppressMarkers : true
+    getClickLatLng(e.latLng, map);
+    });
   }
-  directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-  directionsService = new google.maps.DirectionsService();
-}
 
 
 // 住所、座標を取得
-function getClickLatLng(latlng) {
-  var geocoder = new google.maps.Geocoder();
+function getClickLatLng(latlng, map) {
+  document.getElementById('lat').textContent = latlng.lat();
+  document.getElementById('lng').textContent = latlng.lng();
 
-  geocoder.geocode({
-    latLng: latlng
-  }, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      if (results[0].geometry) {
-        var address = results[0].formatted_address.replace(/^日本(、|,)/, '');
-        app.adrs_list.push({address: address, lat: latlng.lat(), lng: latlng.lng(), comment: ""});
-        var marker = new google.maps.Marker({ position: latlng, map: map, title: address, animation: google.maps.Animation.DROP});
-      }
-    } else {
-      app.adrs_list.push({address: "", lat: latlng.lat(), lng: latlng.lng(), comment: status});
-    }
+  var marker = new google.maps.Marker({
+    position: latlng,
+    map: map
   });
+
+  map.panTo(latlng);
 }
 
-// ピンをつなぐルートを検索
-function search() {
-  var points = $("ul");
-
-  if (points.length >= 2){
-        var origin; // 開始地点
-        var destination; // 終了地点
-        var waypoints = []; // 経由地点
-
-        // origin, destination, waypointsを設定する
-        for (var i = 0; i < points.length; i++) {
-            points[i] = new google.maps.LatLng($(points[i]).find("input")[0].value, $(points[i]).find("input")[1].value);
-            if (i == 0){
-                origin = points[i];
-            } else if (i == points.length-1){
-                destination = points[i];
-            } else {
-                waypoints.push({ location: points[i], stopover: true });
-            }
-        }
-         // リクエスト作成
-        var request = {
-            origin:      origin,
-            destination: destination,
-            waypoints: waypoints,
-            travelMode:  google.maps.TravelMode.DRIVING
-        };
-        // ルートサービスのリクエスト
-        directionsService.route(request, function(response, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                // 結果を表示する
-                directionsDisplay.setDirections(response);
-                directionsDisplay.setMap(map);
-            }
-        });
-  }
-}
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <style>
 #map {
   height: 600px;
