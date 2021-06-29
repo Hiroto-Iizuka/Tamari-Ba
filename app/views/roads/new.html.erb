@@ -1,15 +1,23 @@
 <p>新規投稿</p>
 <h2>Google Maps</h2>
+
+<input id="address" type="textbox">
+<input type="button" value="検索" placeholder="検索してマップを移動できます" onclick="searchArea()">
+
 <div id="map"></div>
 
 
-  <ul v-for="val in adrs_list">
+  <%# <ul>
     <li>緯度: <span id="lat"></span></li>
     <li>経度: <span id="lng"></span></li>
-  </ul>
+  </ul> %>
 
+<%# <input id="lat">
+<input id="lng"> %>
 
 <%= form_with model: @road, local: true do |f| %>
+  <p>緯度: <%=f.text_field :latitude %></p>
+  <p>経度: <%=f.text_field :longitude %></p>
   <p>タイトル:<%= f.text_field :title %></p>
   <p>コメント:<%= f.text_field :description %></p>
   <%= f.submit "投稿" %>
@@ -17,11 +25,12 @@
 
 
 <script>
-var map = {};
+let map = {};
 const tokyoStationLat = 35.6809591
 const tokyoStationLng = 139.7673068
 
 function initMap() {
+  geocoder = new google.maps.Geocoder();
   // 初期マップ
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: tokyoStationLat, lng: tokyoStationLng},
@@ -38,8 +47,8 @@ function initMap() {
 
 // 住所、座標を取得
 function getClickLatLng(latlng, map) {
-  document.getElementById('lat').textContent = latlng.lat();
-  document.getElementById('lng').textContent = latlng.lng();
+  document.getElementById('road_latitude').value = latlng.lat();
+  document.getElementById('road_longitude').value = latlng.lng();
 
   var marker = new google.maps.Marker({
     position: latlng,
@@ -49,9 +58,26 @@ function getClickLatLng(latlng, map) {
   map.panTo(latlng);
 }
 
+let geocoder
 
+
+function searchArea() {
+  // 検索フォームの入力内容を取得
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress }, function(results, status) {
+    // 該当する検索結果がヒットした時に、地図の中心を検索結果の緯度経度に更新
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+    } else {
+      // 検索結果がなかった場合に表示
+      alert('該当する結果がありませんでした:' + status);
+    }
+  }); 
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <style>
 #map {
   height: 600px;
