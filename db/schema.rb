@@ -10,36 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_224823) do
+ActiveRecord::Schema.define(version: 2021_06_26_234642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "road_images", force: :cascade do |t|
+    t.string "src", null: false
+    t.bigint "road_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["road_id"], name: "index_road_images_on_road_id"
+  end
+
   create_table "roads", force: :cascade do |t|
     t.string "title"
-    t.float "origin_latitude"
-    t.float "origin_longitude"
-    t.float "via_latitude_1"
-    t.float "via_longitude_1"
-    t.float "via_latitude_2"
-    t.float "via_longitude_2"
-    t.float "via_latitude_3"
-    t.float "via_longitude_3"
-    t.float "via_latitude_4"
-    t.float "via_longitude_4"
-    t.float "via_latitude_5"
-    t.float "via_longitude_5"
-    t.float "via_latitude_6"
-    t.float "via_longitude_6"
-    t.float "via_latitude_7"
-    t.float "via_longitude_7"
-    t.float "via_latitude_8"
-    t.float "via_longitude_8"
-    t.float "destination_latitude"
-    t.float "destination_longitude"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,4 +53,5 @@ ActiveRecord::Schema.define(version: 2021_05_10_224823) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "road_images", "roads"
 end

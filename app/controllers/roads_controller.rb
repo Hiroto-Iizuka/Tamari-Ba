@@ -4,6 +4,7 @@ class RoadsController < ApplicationController
   end
 
   def show
+    @road = Road.find(params[:id])
   end
 
   def new
@@ -11,7 +12,7 @@ class RoadsController < ApplicationController
   end
 
   def create
-    Road.create(road_params)
+    @road = Road.create(road_params)
   end
 
   def edit
@@ -30,6 +31,6 @@ class RoadsController < ApplicationController
 
   private
   def road_params
-    params.require(:road).permit(:title, :description)
+    params.require(:road).permit(:title, :description, :latitude, :longitude)
   end
 end

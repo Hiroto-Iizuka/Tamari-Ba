@@ -1,5 +1,7 @@
 <p>更新</p>
 <%= form_with model: @road, local: true do |f| %>
+  <p>緯度: <%=f.text_field :latitude %></p>
+  <p>経度: <%=f.text_field :longitude %></p>
   <p>タイトル:<%= f.text_field :title %></p>
   <p>コメント:<%= f.text_field :description %></p>
 <% end %>
