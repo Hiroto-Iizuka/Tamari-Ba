@@ -1,7 +1,12 @@
 <%= @road.title %>
 <div id="map"></div>
 <div id="roads" data-roads="<%= @roads.to_json %>"></div>
-
+<% if @road.road_images.attached? %>
+  <% @road.road_images.each do |image| %>
+    <%= image_tag image, size:"100×100" %>
+  <% end %>
+<% end %>
+<br>
 <%= @road.description %>
 
 <script>

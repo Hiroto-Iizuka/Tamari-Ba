@@ -1,7 +1,27 @@
 <p>更新</p>
 <%= form_with model: @road, local: true do |f| %>
-  <p>緯度: <%=f.text_field :latitude %></p>
-  <p>経度: <%=f.text_field :longitude %></p>
-  <p>タイトル:<%= f.text_field :title %></p>
-  <p>コメント:<%= f.text_field :description %></p>
+  <div>
+    緯度: <%=f.text_field :latitude %>
+    経度: <%=f.text_field :longitude %>
+  </div>
+  
+  <div>
+    <% if @road.road_images.present? %>
+    <p>現在投稿されている画像(削除するものはチェックしてください)</p>
+      <% @road.road_images.each do |image| %>
+        <%= f.check_box :road_image_ids, {multiple: true}, image.id, false %>
+        <%= image_tag image, size:"100×100" %> <br>
+      <% end %>
+    <% end %>
+  </div>
+
+  
+  <div>
+    タイトル:<%= f.text_field :title %>
+    コメント:<%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.submit '更新する' %>
+  </div>
 <% end %>

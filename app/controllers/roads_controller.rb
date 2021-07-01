@@ -21,7 +21,18 @@ class RoadsController < ApplicationController
 
   def update
     road = Road.find(params[:id])
-    road.update(road_params)
+    if params[:road][:road_image_ids]
+      params[:road][:road_image_ids].each do |road_image_id|
+        image = road.road_images.find(road_image_id)
+        image.purge
+      end
+    end
+    if road.update(road_params)
+      flash[:success] = "編集しました"
+      redirect_to roads_url
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -30,7 +41,7 @@ class RoadsController < ApplicationController
   end
 
   private
-  def road_params
-    params.require(:road).permit(:title, :description, :latitude, :longitude)
-  end
+    def road_params
+      params.require(:road).permit(:title, :description, :latitude, :longitude, road_images: [])
+    end
 end
