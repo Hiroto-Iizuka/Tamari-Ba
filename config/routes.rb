@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'users/show' => 'users#show'
   root :to => 'home#index'
 
-  resources :roads, only: [:index, :new, :create, :show, :edit, :destroy]
+  resources :roads, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     namespace :admin do
       resources :roads, only: [:index, :new, :create, :show, :edit, :destroy]
     end

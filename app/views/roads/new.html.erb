@@ -20,6 +20,7 @@
   <p>経度: <%=f.text_field :longitude %></p>
   <p>タイトル:<%= f.text_field :title %></p>
   <p>コメント:<%= f.text_field :description %></p>
+  <%= f.file_field :road_images, multiple: true %>
   <%= f.submit "投稿" %>
 <% end %>
 
