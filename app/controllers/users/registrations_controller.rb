@@ -4,11 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   before_action :ensure_normal_user, only: %i[update, destroy]
-
-  def ensure_normal_user
-    redirect_to root_path, alert: "ゲストユーザーは更新・削除できません"
-  end
-
+  
   # GET /resource/sign_up
   # def new
   #   super
@@ -57,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     if resource.email == "guest@example.com"
-      ensure_normal_user
+      redirect_to root_path, alert: "ゲストユーザーは更新・削除できません"
     else
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :age, :gender, :bike_type, :bike_name, :engine_size, :experience_years, :through])
     end
