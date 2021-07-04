@@ -1,3 +1,6 @@
+<h1>投稿詳細</h1>
+<p>投稿者: <%= @road.user.name %></p>
+<p>投稿日時: <%= @road.created_at %></p>
 <%= @road.title %>
 <div id="map"></div>
 <div id="roads" data-roads="<%= @roads.to_json %>"></div>
@@ -8,6 +11,15 @@
 <% end %>
 <br>
 <%= @road.description %>
+
+<% if current_user.id == @road.user_id %>
+  <p>
+    <%= link_to "編集", edit_road_path(@road) %>
+    <%= link_to "削除", road_path(@road), method: :delete, data: { confirm: "削除しますか?" } %>
+  </p>
+<% end %>
+
+<p><%= link_to "投稿一覧へ", roads_path %></p>
 
 <script>
 let map
