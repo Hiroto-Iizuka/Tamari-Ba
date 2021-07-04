@@ -42,6 +42,6 @@ class RoadsController < ApplicationController
 
   private
     def road_params
-      params.require(:road).permit(:title, :description, :latitude, :longitude, road_images: [])
+      params.require(:road).permit(:title, :description, :latitude, :longitude, road_images: []).merge(user_id: current_user.id)
     end
 end
