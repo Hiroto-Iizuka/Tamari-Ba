@@ -1,10 +1,12 @@
 <h1>投稿一覧</h1>
 <%= link_to '新規投稿', new_road_path, class: 'btn' %>
 <% @roads.each do |road| %>
-  <p>
-    <%= road.title %>
-    <%= road.description %>
-    <%= link_to "削除", road_path(road), method: :delete, data: {confirm: "削除しますか？"} %>
-    <%= link_to "編集", edit_road_path(road) %>
-  </p>
+  <p><%= road.title %></p>
+  <% road.road_images.each do |image| %>
+    <%= image_tag image, width: '35%', height: '35%' %>
+  <% end %>
+  <p><%= road.description %></p>
+  <%= link_to "詳細", road_path(road) %>
+  <%= link_to "編集", edit_road_path(road) %>
+  <%= link_to "削除", road_path(road), method: :delete, data: {confirm: "削除しますか？"} %>
 <% end %>

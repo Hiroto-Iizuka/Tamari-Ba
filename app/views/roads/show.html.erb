@@ -3,7 +3,7 @@
 <div id="roads" data-roads="<%= @roads.to_json %>"></div>
 <% if @road.road_images.attached? %>
   <% @road.road_images.each do |image| %>
-    <%= image_tag image, size:"100×100" %>
+    <%= image_tag image, width: '35%', height: '35%' %>
   <% end %>
 <% end %>
 <br>
@@ -75,7 +75,7 @@ function codeAddress() {
 
 <style>
 #map {
-  height: 600px;
-  width: 600px;
+  height: 450px;
+  width: 450px;
 }
 </style>
