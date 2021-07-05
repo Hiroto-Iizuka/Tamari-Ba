@@ -4,6 +4,16 @@
 <%= @road.title %>
 <div id="map"></div>
 
+<p>
+  <% if @road.liked_by?(current_user) %>
+    <%# 「いいね！」済み %>
+    <%= render "like", post: @road %>
+  <% else %>
+    <%# 「いいね！」していない %>
+    <%= render "dislike", post: @road %>
+  <% end %>
+</p>
+
 <div id="roads" data-roads="<%= @roads.to_json %>"></div>
 <% if @road.road_images.attached? %>
   <% @road.road_images.each do |image| %>
