@@ -1,10 +1,13 @@
 class RoadsController < ApplicationController
+
   def index
     @roads = Road.all
   end
 
   def show
     @road = Road.find(params[:id])
+    @comments = @road.comments
+    @comment = Comment.new
   end
 
   def new
@@ -42,6 +45,6 @@ class RoadsController < ApplicationController
 
   private
     def road_params
-      params.require(:road).permit(:title, :description, :latitude, :longitude, road_images: []).merge(user_id: current_user.id)
+      params.require(:road).permit(:title, :description, :latitude, :longitude, :content, road_images: []).merge(user_id: current_user.id)
     end
 end
