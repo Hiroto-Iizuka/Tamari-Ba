@@ -10,4 +10,14 @@ User.create!(name: "田中",
              password: "password",
              password_confirmation: "password")
 
+User.create!(name: "佐藤",
+             email: "sato@example.com",
+             password: "password",
+             password_confirmation: "password")
+
+User.create!(name: "Watanabe",
+             email: "watanabe@example.com",
+             password: "password",
+             password_confirmation: "password")
+
 puts "初期データの投入に成功しました！"
