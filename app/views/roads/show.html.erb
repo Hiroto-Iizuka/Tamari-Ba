@@ -3,6 +3,7 @@
 <p>投稿日時: <%= @road.created_at %></p>
 <%= @road.title %>
 <div id="map"></div>
+
 <div id="roads" data-roads="<%= @roads.to_json %>"></div>
 <% if @road.road_images.attached? %>
   <% @road.road_images.each do |image| %>
@@ -22,7 +23,7 @@
 <p><%= link_to "投稿一覧へ", roads_path %></p>
 
 <script>
-let map
+let mapInstance
 let geocoder
 let marker
 
