@@ -1,27 +1,84 @@
-<p>更新</p>
+<h1>編集</h1>
+
+<div id="map"></div>
+
 <%= form_with model: @road, local: true do |f| %>
-  <div>
-    緯度: <%=f.text_field :latitude %>
-    経度: <%=f.text_field :longitude %>
-  </div>
-  
-  <div>
+    <p>緯度: <%=f.text_field :latitude %></p>
+    <p>経度: <%=f.text_field :longitude %></p>
     <% if @road.road_images.present? %>
-    <p>現在投稿されている画像(削除するものはチェックしてください)</p>
+      <p>現在投稿されている画像(削除するものはチェックしてください)</p>
       <% @road.road_images.each do |image| %>
+      <p>
         <%= f.check_box :road_image_ids, {multiple: true}, image.id, false %>
-        <%= image_tag image, size:"100×100" %> <br>
+        <%= image_tag image, width: '35%', height: '35%' %>
+      </p>
       <% end %>
     <% end %>
-  </div>
-
-  
-  <div>
-    タイトル:<%= f.text_field :title %>
-    コメント:<%= f.text_field :description %>
-  </div>
-
-  <div>
+    <p>タイトル:<%= f.text_field :title %></p>
+    <p>コメント:<%= f.text_field :description %></p>
     <%= f.submit '更新する' %>
-  </div>
 <% end %>
+
+<script>
+let mapInstance
+let geocoder
+let marker
+
+const savedLat = <%= @road.latitude %>
+const savedLng = <%= @road.longitude %>
+
+function initMap() {
+  geocoder = new google.maps.Geocoder();
+  // 保存された座標データが中心に来るように設定
+  mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: savedLat, lng: savedLng},
+    zoom:13,
+    mapTypeControl: false
+  });
+
+  // 保存された座標を使ってピンをさす
+  pos = new google.maps.LatLng(
+    savedLat,
+    savedLng
+  );
+  default_marker = new google.maps.Marker({
+    map: mapInstance,
+    position: pos,
+    icon: {
+      url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+      scaledSize: new google.maps.Size(40, 40)
+    }
+  });
+
+    // クリックしたときに関数を実行
+  mapInstance.addListener('click', function(e) {
+    getClickLatLng(e.latLng, mapInstance);
+    });
+  }
+
+
+// 住所、座標を取得
+function getClickLatLng(latlng, mapInstance) {
+  document.getElementById('road_latitude').value = latlng.lat();
+  document.getElementById('road_longitude').value = latlng.lng();
+
+  var marker = new google.maps.Marker({
+    position: latlng,
+    map: mapInstance
+  });
+
+  mapInstance.panTo(latlng);
+}
+
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
