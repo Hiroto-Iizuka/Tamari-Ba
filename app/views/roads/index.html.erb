@@ -3,6 +3,15 @@
 <% @roads.each do |road| %>
   <p><%= road.title %></p>
   <%= image_tag road.road_images.first, width: '35%', height: '35%' %>
+  <p>
+  <% if road.liked_by?(current_user) %>
+    <%# 「いいね！」済み %>
+    <%= link_to "★", road_likes_path(@roads), method: :delete %>
+  <% else %>
+    <%# 「いいね！」していない %>
+    <%= link_to "☆", destroy_like_path(road), method: :road %>
+  <% end %>
+</p>
   <p><%= road.description %></p>
   <%= link_to "詳細", road_path(road) %>
   <% if current_user.id == road.user_id %>
