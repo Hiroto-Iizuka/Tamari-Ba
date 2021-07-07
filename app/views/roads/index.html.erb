@@ -6,10 +6,10 @@
   <p>
   <% if road.liked_by?(current_user) %>
     <%# 「いいね！」済み %>
-    <%= link_to "★", road_likes_path(@roads), method: :delete %>
+    <%= link_to "★", road_likes_path(road.id), method: :delete %>
   <% else %>
     <%# 「いいね！」していない %>
-    <%= link_to "☆", destroy_like_path(road), method: :road %>
+    <%= link_to "☆", road_likes_path(road.id), method: :road %>
   <% end %>
 </p>
   <p><%= road.description %></p>
