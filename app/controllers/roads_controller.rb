@@ -1,7 +1,7 @@
 class RoadsController < ApplicationController
 
   def index
-    @roads = Road.all
+    @roads = Road.includes(:user, :likes).order(:created_at)
   end
 
   def show
