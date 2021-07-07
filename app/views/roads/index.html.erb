@@ -9,7 +9,7 @@
     <%= link_to "★", road_likes_path(road.id), method: :delete %>
   <% else %>
     <%# 「いいね！」していない %>
-    <%= link_to "☆", road_likes_path(road.id), method: :road %>
+    <%= link_to "☆", road_likes_path(road.id), method: :post %>
   <% end %>
 </p>
   <p><%= road.description %></p>
