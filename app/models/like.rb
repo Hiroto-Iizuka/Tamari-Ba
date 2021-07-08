@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
   belongs_to :user
-  belongs_to :road
+  belongs_to :road, counter_cache: :likes_count
 
   validates :user_id, uniqueness: {
     scope: :road_id,
