@@ -12,6 +12,7 @@
     <%# 「いいね！」していない %>
     <%= render "dislike", post: @road %>
   <% end %>
+  <%= @likes_count %>
 </p>
 
 <div id="roads" data-roads="<%= @roads.to_json %>"></div>

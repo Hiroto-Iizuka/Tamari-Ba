@@ -8,6 +8,7 @@ class RoadsController < ApplicationController
     @road = Road.find(params[:id])
     @comments = @road.comments
     @comment = Comment.new
+    @likes_count = Like.where(road_id: @road.id).count
   end
 
   def new

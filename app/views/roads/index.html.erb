@@ -12,6 +12,7 @@
     <%= link_to "☆", road_likes_path(road.id), method: :post %>
   <% end %>
 </p>
+  <%= road.liked_users.count %>
   <p><%= road.description %></p>
   <%= link_to "詳細", road_path(road) %>
   <% if current_user.id == road.user_id %>
