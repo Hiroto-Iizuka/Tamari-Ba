@@ -4,7 +4,7 @@
 <%= @road.title %>
 <div id="map"></div>
 
-<p>
+<p id="road-<%= @road.id %>">
   <% if @road.liked_by?(current_user) %>
     <%# 「いいね！」済み %>
     <%= render "like", post: @road %>
