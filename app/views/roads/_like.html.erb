@@ -1,2 +1,4 @@
-<%= link_to "★", road_likes_path(@road), method: :delete, remote: true %>
+<%= link_to road_likes_path(@road), class: "like-link", method: :delete, remote: true do %>
+  <i class="fas fa-heart unlike-btn"></i>
+<% end %>
 <%= @road.likes_count %>

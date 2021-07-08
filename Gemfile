@@ -16,6 +16,7 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'dotenv-rails'
 gem 'gon'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'pry-rails'
