@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :prefecture %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択してください' %>
+  </div>
+
+  <div class="field">
     <%= f.label :gender %><br />
     <label><%= f.radio_button :gender, "0" %> 男性 </label>
     <label><%= f.radio_button :gender, "1" %> 女性 </label>

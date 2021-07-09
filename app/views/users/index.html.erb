@@ -1,0 +1,14 @@
+<h1>ユーザー一覧</h1>
+
+<% @users.each do |user| %>
+  <p>ID: <%= user.id %></p>
+  <p>ユーザー名: <%= user.name %></p>
+  <p>バイク: <%= user.bike_name %></p>
+  <% if user.prefecture_id == nil %>
+    <p>都道府県: <%= "---" %></p>
+  <% else %>
+    <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
+  <% end %>
+
+  <%= link_to "詳細", user_path(user.id) %>
+<% end %>

@@ -1,6 +1,56 @@
-<h1>about me</h1>
+  <%# create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", default: "", null: false
+    t.integer "age"
+    t.integer "gender"
+    t.string "bike_type"
+    t.string "bike_name"
+    t.integer "engine_size"
+    t.integer "experience_years"
+    t.boolean "through"
+    t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end %>
 
-<h3>ユーザー名</h3>
-<%= @user.name %>
-<h3>メールアドレス</h3>
-<%= @user.email %>
+<h1>プロフィール</h1>
+
+<h2>ユーザー情報</h2>
+<h3>ユーザー名: <%= @user.name %></h3>
+<h3>年齢: <%= @user.age %>歳</h3>
+<% if @user.gender == 0 %>
+  <% gender = "男性" %>
+<% elsif @user.gender == 1 %>
+  <% gender = "女性" %>
+<% elsif @user.gender == 2 %>
+  <% gender = "その他" %>
+<% elsif @user.gender == 9 %>
+  <% gender = "答えたくない" %>
+<% else %>
+  <% gender = "不明" %>
+<% end %>
+<h3>性別: <%= gender %></h3>
+<% if @user.prefecture_id == nil %>
+  <p>都道府県: <%= "---" %></p>
+<% else %>
+  <p>都道府県: <%= @prefecture.name %></p>
+<% end %>
+
+<h2>バイク</h2>
+<h3>タイプ: <%= @user.bike_type %></h3>
+<h3>バイク名: <%= @user.bike_name %></h3>
+<h3>排気量: <%= @user.engine_size %>cc</h3>
+
+<h2>スキル</h2>
+<h3>バイク歴: <%= @user.experience_years %>年</h3>
+<% if @user.through == true %>
+  <h3>すり抜け: 可</h3>
+<% else %>
+  <h3>すり抜け: 不可</h3>
+<% end %>
