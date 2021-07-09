@@ -7,10 +7,10 @@
 <p id="road-<%= @road.id %>">
   <% if @road.liked_by?(current_user) %>
     <%# 「いいね！」済み %>
-    <%= render "like", post: @road %>
+    <%= render "like", post: @post %>
   <% else %>
     <%# 「いいね！」していない %>
-    <%= render "dislike", post: @road %>
+    <%= render "dislike", post: @post %>
   <% end %>
 </p>
 

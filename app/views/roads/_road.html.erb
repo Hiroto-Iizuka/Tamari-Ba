@@ -5,12 +5,14 @@
     <p id="road-<%= road.id %>">
       <% if road.liked_by?(current_user) %>
         <%# 「いいね！」済み %>
-        <%= link_to road_likes_path(road.id), class: "like-link", method: :delete, remote: true do %>
+        <% @road = road.id %>
+        <%= link_to road_likes_path(@road), class: "like-link", method: :delete, remote: true do %>
           <i class="far fa-heart unlike-btn"></i>
         <% end %>
       <% else %>
         <%# 「いいね！」していない %>
-        <%= link_to road_likes_path(road.id), class: "like-link", method: :post, remote: true do %>
+        <% @road = road.id %>
+        <%= link_to road_likes_path(@road), class: "like-link", method: :post, remote: true do %>
           <i class="fas fa-heart like-btn"></i>
         <% end %>
       <% end %>
