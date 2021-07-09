@@ -36,6 +36,11 @@
   <% gender = "不明" %>
 <% end %>
 <h3>性別: <%= gender %></h3>
+<% if @user.prefecture_id == nil %>
+  <p>都道府県: <%= "---" %></p>
+<% else %>
+  <p>都道府県: <%= @prefecture.name %></p>
+<% end %>
 
 <h2>バイク</h2>
 <h3>タイプ: <%= @user.bike_type %></h3>
