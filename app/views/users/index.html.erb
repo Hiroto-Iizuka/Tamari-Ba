@@ -1,6 +1,11 @@
 <h1>ユーザー一覧</h1>
 
 <% @users.each do |user| %>
+  <% if user.avatar.attached? %>
+    <%= image_tag user.avatar.variant(resize: '120×120') %>
+  <% else %>
+    <%= image_tag "noimage.png", width: '120px', height: '120px' %>
+  <% end %>
   <p>ID: <%= user.id %></p>
   <p>ユーザー名: <%= user.name %></p>
   <p>バイク: <%= user.bike_name %></p>
@@ -11,4 +16,5 @@
   <% end %>
 
   <%= link_to "詳細", user_path(user.id) %>
+  <br>
 <% end %>
