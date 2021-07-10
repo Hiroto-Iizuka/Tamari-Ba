@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.order(id: :asc)
     @prefectures = Prefecture.all
   end
   
@@ -16,6 +16,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :prefecture_id)
+      params.require(:user).permit(:name, :prefecture_id, :avatar)
     end
 end

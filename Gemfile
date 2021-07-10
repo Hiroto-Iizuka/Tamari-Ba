@@ -18,6 +18,8 @@ gem 'dotenv-rails'
 gem 'gon'
 gem 'font-awesome-sass'
 gem 'seed-fu'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
 
 group :development, :test do
   gem 'pry-rails'

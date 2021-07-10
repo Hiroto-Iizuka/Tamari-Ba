@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes, dependent: :destroy
   has_many :liked_roads, through: :likes, source: :road
+  has_one_attached :avatar
   belongs_to :prefecture, optional: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -21,9 +21,14 @@
 
 <h1>プロフィール</h1>
 
-<h2>ユーザー情報</h2>
-<h3>ユーザー名: <%= @user.name %></h3>
-<h3>年齢: <%= @user.age %>歳</h3>
+<h3>ユーザー情報</h3>
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, width: '120px', heifht: '120px' %>
+<% else %>
+  <%= image_tag "noimage.png", width: '100px', height: '100px' %>
+<% end %>
+<p>ユーザー名: <%= @user.name %></p>
+<p>年齢: <%= @user.age %>歳</p>
 <% if @user.gender == 0 %>
   <% gender = "男性" %>
 <% elsif @user.gender == 1 %>
@@ -35,22 +40,22 @@
 <% else %>
   <% gender = "不明" %>
 <% end %>
-<h3>性別: <%= gender %></h3>
+<p>性別: <%= gender %></p>
 <% if @user.prefecture_id == nil %>
   <p>都道府県: <%= "---" %></p>
 <% else %>
   <p>都道府県: <%= @prefecture.name %></p>
 <% end %>
 
-<h2>バイク</h2>
-<h3>タイプ: <%= @user.bike_type %></h3>
-<h3>バイク名: <%= @user.bike_name %></h3>
-<h3>排気量: <%= @user.engine_size %>cc</h3>
+<h3>バイク</h3>
+<p>タイプ: <%= @user.bike_type %></p>
+<p>バイク名: <%= @user.bike_name %></p>
+<p>排気量: <%= @user.engine_size %>cc</p>
 
-<h2>スキル</h2>
-<h3>バイク歴: <%= @user.experience_years %>年</h3>
+<h3>スキル</h3>
+<p>バイク歴: <%= @user.experience_years %>年</p>
 <% if @user.through == true %>
-  <h3>すり抜け: 可</h3>
+  <p>すり抜け: 可</p>
 <% else %>
-  <h3>すり抜け: 不可</h3>
+  <p>すり抜け: 不可</p>
 <% end %>

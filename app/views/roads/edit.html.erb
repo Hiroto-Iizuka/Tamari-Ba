@@ -5,7 +5,7 @@
 <%= form_with model: @road, local: true do |f| %>
     <p>緯度: <%=f.text_field :latitude %></p>
     <p>経度: <%=f.text_field :longitude %></p>
-    <% if @road.road_images.present? %>
+    <% if @road.road_images.persent? %>
       <p>現在投稿されている画像(削除するものはチェックしてください)</p>
       <% @road.road_images.each do |image| %>
       <p>

@@ -1,14 +1,26 @@
 <h1>ユーザー一覧</h1>
 
 <% @users.each do |user| %>
-  <p>ID: <%= user.id %></p>
-  <p>ユーザー名: <%= user.name %></p>
-  <p>バイク: <%= user.bike_name %></p>
-  <% if user.prefecture_id == nil %>
-    <p>都道府県: <%= "---" %></p>
+  <% if user.name == "管理者" %>
+    <% next %>
   <% else %>
-    <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
-  <% end %>
+    
+    <p>ID: <%= user.id %></p>
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, width: '120px', heifht: '120px' %>
+    <% else %>
+      <%= image_tag "noimage.png", width: '120px', height: '120px' %>
+    <% end %>
+    <p>ユーザー名: <%= user.name %></p>
+    <p>バイク: <%= user.bike_name %></p>
+    <% if user.prefecture_id == nil %>
+      <p>都道府県: <%= "---" %></p>
+    <% else %>
+      <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
+    <% end %>
 
-  <%= link_to "詳細", user_path(user.id) %>
+    <%= link_to "詳細", user_path(user.id) %>
+    <br>
+    
+  <% end %>
 <% end %>

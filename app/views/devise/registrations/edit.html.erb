@@ -4,17 +4,22 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :プロフィール写真 %><br>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %><br>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :age %><br />
+    <%= f.label :age %><br>
     <%= f.text_field :age %>
   </div>
 
@@ -24,7 +29,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :gender %><br />
+    <%= f.label :gender %><br>
     <label><%= f.radio_button :gender, "0" %> 男性 </label>
     <label><%= f.radio_button :gender, "1" %> 女性 </label>
     <label><%= f.radio_button :gender, "2" %> その他 </label>
@@ -36,7 +41,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password %><br>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <em>＊<%= @minimum_password_length %>文字以上</em>
@@ -44,7 +49,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :bike_type %><br />
+    <%= f.label :bike_type %><br>
     <label><%= f.radio_button :bike_type, "ネイキッド" %> ネイキッド </label>
     <label><%= f.radio_button :bike_type, "SS" %> SS </label>
     <label><%= f.radio_button :bike_type, "クルーザー" %> クルーザー </label>
@@ -54,22 +59,22 @@
   </div>
 
   <div class="field">
-    <%= f.label :bike_name %><br />
+    <%= f.label :bike_name %><br>
     <%= f.text_field :bike_name %>
   </div>
 
   <div class="field">
-    <%= f.label :engine_size %><br />
+    <%= f.label :engine_size %><br>
     <%= f.text_field :engine_size %>
   </div>
 
   <div class="field">
-    <%= f.label :experience_years %><br />
+    <%= f.label :experience_years %><br>
     <%= f.text_field :experience_years %>
   </div>
 
   <div class="field">
-    <%= f.label :through %><br />
+    <%= f.label :through %><br>
     <label><%= f.radio_button :through, "false" %> 不可 </label>
     <label><%= f.radio_button :through, "true" %> 可 </label>
   </div>
