@@ -3,9 +3,14 @@
 
 <% @roads.each do |road| %>
   <p><%= road.title %></p>
-  <%= image_tag road.road_images.first, width: '35%', height: '35%' %>
-  
-  <%= render partial: 'road', locals: {roads: @roads} %>
+
+  <% if road.road_images.attached? %>
+    <%= image_tag road.road_images.first, width: '35%', height: '35%' %>
+  <% else %>
+    <%= "画像なし" %>
+  <% end %>
+
+  <%= render partial: 'road', locals: {road: road} %>
 
   <p><%= road.description %></p>
   <%= link_to "詳細", road_path(road) %>
