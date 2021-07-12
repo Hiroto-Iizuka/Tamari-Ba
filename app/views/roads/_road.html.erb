@@ -1,7 +1,11 @@
 <div>  
   <% @roads.each do |road| %>
     <p><%= road.title %></p>
-    <%= image_tag road.road_images.first, width: '35%', height: '35%' %>
+    <% if road.road_images.attached? %>
+      <%= image_tag road.road_images.first, width: '35%', height: '35%' %>
+    <% else %>
+      <%= image_tag "noimage.png", width: '120px', height: '120px' %>
+    <% end %>
     <p id="road-<%= road.id %>">
       <% if road.liked_by?(current_user) %>
         <%# 「いいね！」済み %>
