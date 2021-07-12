@@ -1,21 +1,13 @@
 <h1>投稿一覧</h1>
 <%= link_to '新規投稿', new_road_path, class: 'btn' %>
 
-<% @roads.each do |road| %>
-  <p><%= road.title %></p>
+<%= render partial: 'road' %>
 
-  <% if road.road_images.attached? %>
-    <%= image_tag road.road_images.first, width: '35%', height: '35%' %>
-  <% else %>
-    <%= "画像なし" %>
-  <% end %>
-
-  <%= render partial: 'road', locals: {road: road} %>
-
-  <p><%= road.description %></p>
-  <%= link_to "詳細", road_path(road) %>
-  <% if current_user.id == road.user_id %>
-    <%= link_to "編集", edit_road_path(road) %>
-    <%= link_to "削除", road_path(road), method: :delete, data: {confirm: "削除しますか？"} %>
-  <% end%>
-<% end %>
+<button type="button" class="btn btn-outline-primary">Primary</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<button type="button" class="btn btn-outline-success">Success</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-info">Info</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark">Dark</button>
