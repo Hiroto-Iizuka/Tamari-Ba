@@ -1,4 +1,8 @@
-// スタイルをいじるときまで無効化
-// @import "initialize";
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
