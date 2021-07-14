@@ -1,9 +1,7 @@
-<h1>投稿一覧</h1>
-<%= link_to '新規投稿', new_road_path, class: 'btn' %>
-
-<% @roads.each do |road| %>
-  <div class="card-deck"></div>
-    <div class="row row-cols-1 row-cols-md-3">
+<div class="container">
+  <h2 class="text-center py-5">投稿一覧</h2>
+  <div class="row">
+    <% @roads.each do |road| %>
       <div class="col mb-4">
         <div class="card-group">
           <div class="card" style="width: 18rem;">
@@ -15,21 +13,22 @@
               <% end %>
             </div>  
             <div class="card-body">
-              <h5 class="card-title"><%= road.title %></h5>
-              <p class="card-title"><%= road.description %></p>
+              <h5 class="card-title"><%= link_to "#{road.title}", road_path(road, class: "showlink") %></h5>
+              <p class="card-title"><%= road.description.truncate(24, omission: '...') %></p>
             </div>
             
             <%= render partial: 'road', locals: {road: road} %>
-            
-            <%= link_to "詳細", road_path(road), class: "btn btn-primary w-25" %>
-          
-            <% if current_user.id == road.user_id %>
-              <%= link_to "編集", edit_road_path(road), class: "btn btn-primary w-25" %>
-              <%= link_to "削除", road_path(road), class: "btn btn-warning w-25", method: :delete, data: {confirm: "削除しますか？"} %>
-            <% end%> 
+            <div class="block-center">
+              <div class="text-right pr-3 pb-2">
+                <% if current_user.id == road.user_id %>
+                  <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm" %>
+                  <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
+                <% end%> 
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
