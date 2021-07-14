@@ -1,4 +1,4 @@
-<p id="road-<%= @road.id %>">
+<p id="road-<%= road.id %>">
   <% if road.liked_by?(current_user) %>
     <%# 「いいね！」済み %>
     <%= render "like", road: road %>
