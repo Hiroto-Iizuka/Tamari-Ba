@@ -1,4 +1,20 @@
 <h1>投稿一覧</h1>
 <%= link_to '新規投稿', new_road_path, class: 'btn' %>
 
-<%= render partial: 'road' %>
+<% @roads.each do |road| %>
+  <p><%= road.title %></p>
+  <% if road.road_images.attached? %>
+    <%= image_tag road.road_images.first, width: '35%', height: '35%' %>
+  <% else %>
+    <%= image_tag "noimage.png", width: '120px', height: '120px' %>
+  <% end %>
+
+  <%= render partial: 'road', locals: {road: road} %>
+
+  <p><%= road.description %></p>
+  <%= link_to "詳細", road_path(road) %>
+  <% if current_user.id == road.user_id %>
+    <%= link_to "編集", edit_road_path(road) %>
+    <%= link_to "削除", road_path(road), method: :delete, data: {confirm: "削除しますか？"} %>
+  <% end%>
+<% end %>
