@@ -13,18 +13,17 @@
               <% end %>
             </div>  
             <div class="card-body">
-              <h5 class="card-title"><%= link_to "#{road.title}", road_path(road, class: "showlink") %></h5>
+              <h5 class="card-title"><%= link_to "#{road.title}", road_path(road) %></h5>
               <p class="card-title"><%= road.description.truncate(24, omission: '...') %></p>
             </div>
             
             <%= render partial: 'road', locals: {road: road} %>
-            <div class="block-center">
               <div class="text-right pr-3 pb-2">
+                <p>by <%= link_to "#{road.user.name}", user_path(road.user) %></p>
                 <% if current_user.id == road.user_id %>
                   <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm" %>
                   <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
                 <% end%> 
-              </div>
             </div>
           </div>
         </div>
