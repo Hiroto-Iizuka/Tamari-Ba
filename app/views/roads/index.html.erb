@@ -1,10 +1,13 @@
 <div class="container">
   <h2 class="text-center py-5">投稿一覧</h2>
-  <div class="row">
+    <div class="text-right">
+    <%= link_to "新規投稿", new_road_path, class: "btn btn-outline-warning mb-3" %>
+  </div>
+  <div class="row col">
     <% @roads.each do |road| %>
       <div class="col mb-4">
         <div class="card-group display: fixed;" >
-          <div class="card" style="width: 18rem;">
+          <div class="card d-flex" style="width: 18rem;">
           
             <div class="card-img-top">
               <% if road.road_images.attached? %>
@@ -16,16 +19,19 @@
 
             <div class="card-body mb-4">
               <h5 class="card-title"><%= link_to "#{road.title}", road_path(road), {class: "show-link"} %></h5>
-              <p class="card-content"><%= road.description.truncate(24, omission: '...') %></p>
+              <p class="card-content"><%= road.description.truncate(15, omission: '...') %></p> 
             </div>
-            
-            <div class="text-right  pr-3 pb-2 mt-4">
+            <div class="text-right mr-3">
               <%= render partial: 'road', locals: {road: road} %>
+            </div>
+            <div class="d-flex justify-content-between mx-3">
               <p class="user-name">by <%= link_to "#{road.user.name}", user_path(road.user), {class: "user-link"} %></p>
-              <% if current_user.id == road.user_id %>
-                <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm" %>
-                <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
-              <% end%> 
+              <div>
+                <% if current_user.id == road.user_id %>
+                  <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm" %>
+                  <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
+                <% end%> 
+              </div>
             </div>
           </div>
         </div>
@@ -33,3 +39,5 @@
     <% end %>
   </div>
 </div>
+
+
