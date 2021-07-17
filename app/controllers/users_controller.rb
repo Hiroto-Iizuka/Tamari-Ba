@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  PER_PAGE = 20
+
   def index
-    @users = User.all.order(id: :asc)
+    @users = User.page(params[:page]).per(PER_PAGE).order(id: :asc)
     @prefectures = Prefecture.all
   end
   
