@@ -2,7 +2,8 @@ class RoadsController < ApplicationController
   PER_PAGE = 15
 
   def index
-    @roads = Road.includes(:user, :likes).page(params[:page]).per(PER_PAGE).order(:created_at)
+    @q = Road.ransack(params[:q])
+    @roads = @q.result.includes(:user, :likes).page(params[:page]).per(PER_PAGE).order(:created_at)
   end
 
   def show
