@@ -11,6 +11,7 @@
   <%= form_with model: @road, local: true do |f| %>
     <div class="d-flex mt-3">
       <p>緯度: <%=f.text_field :latitude, class: "latlng-field" %></p>
+      
       <p class="ml-3">経度: <%=f.text_field :longitude, class: "latlng-field" %></p>
     </div>
     <div class="row mt-3">
