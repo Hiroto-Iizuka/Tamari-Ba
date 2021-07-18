@@ -22,26 +22,16 @@
     </div>
   </div>
 </div>
+
 <div class="container mt-5">
-  <div id="carouselRoadSlides" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div id="roads" data-roads="<%= @roads.to_json %>"></div>
-        <% if @road.road_images.attached? %>
-          <div class="carousel-item active">
-            <% @road.road_images.each do |image| %>
-              <%= image_tag image, width: '35%', height: '35%' %>
-            <% end %>
-          </div>
-          <a class="carousel-control-prev" href="#carouselRoadControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselRoadControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+  <div id="roads" data-roads="<%= @roads.to_json %>"></div>
+    <% if @road.road_images.attached? %>
+      <div class="d-flex">
+        <% @road.road_images.each do |image| %>
+          <%= image_tag image, width: '35%', height: '35%' %>
         <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -56,9 +46,9 @@
   <% end %>
 
   <%= form_for [@road, @comment] do |f| %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, class: "comment-form" %>
     <br>
-    <%= f.submit 'コメントする' %>
+    <%= f.submit 'コメントする', class: "comment-btn" %>
   <% end %>
 
   <p><%= link_to "投稿一覧へ", roads_path %></p>
