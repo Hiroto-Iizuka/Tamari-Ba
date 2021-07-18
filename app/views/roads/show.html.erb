@@ -1,55 +1,75 @@
-<div class="display-name">
-  <h2><%= @road.title %></h2>
-  <%= render 'road', {road: @road} %>
+<div class="container mt-5">
+  <div class="row">
+
+    <div class="col-sm">
+      <div id="map"></div>
+    </div>
+    
+    <div class="col-sm">
+        <h2><%= @road.title %></h2>
+        <%= render 'road', {road: @road} %>
+        <p>by <%= link_to "#{@road.user.name}", user_path(@road.user) %></p>
+        <p><%= @road.created_at.strftime('%Y/%m/%d') %></p>
+        <%= @road.description %>
+        <div class="d-flex justify-content-between mx-3">
+          <% if current_user.id == @road.user_id %>
+            <p>
+              <%= link_to "編集", edit_road_path(@road), class: "btn btn-outline-warning btn-sm" %>
+              <%= link_to "削除", road_path(@road), class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "削除しますか?" } %>
+            </p>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <div id="carouselRoadSlides" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div id="roads" data-roads="<%= @roads.to_json %>"></div>
+        <% if @road.road_images.attached? %>
+          <div class="carousel-item active">
+            <% @road.road_images.each do |image| %>
+              <%= image_tag image, width: '35%', height: '35%' %>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#carouselRoadControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselRoadControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="rdheader-info-box">
-  <div class="rdheader-subinfo">
-    <p>by <%= link_to "#{@road.user.name}", user_path(@road.user) %></p>
-  </div>
-  <div class="rdheader-subinfo">
-    <p><%= @road.created_at.strftime('%Y/%m/%d') %></p>
-  </div>
-</div>
-
-<div class="bx-controls bx-has-controls-direction">
-  <div class="bx-controls-direction">
-    <div id="map"></div>
-  </div>
-</div>
-
-<div id="roads" data-roads="<%= @roads.to_json %>"></div>
-<% if @road.road_images.attached? %>
-  <% @road.road_images.each do |image| %>
-    <%= image_tag image, width: '35%', height: '35%' %>
+<div class="container mt-5">
+  <h2>コメント一覧</h2>
+  <% @comments.each do |c| %>
+    <div>
+      <a href="/users/<%= @road.user.id %>"><%= c.user.name %></a>
+      <%= c.content %>
+      <hr>
+    </div>
   <% end %>
-<% end %>
-<br>
-<%= @road.description %>
 
-<% if current_user.id == @road.user_id %>
-  <p>
-    <%= link_to "編集", edit_road_path(@road) %>
-    <%= link_to "削除", road_path(@road), method: :delete, data: { confirm: "削除しますか?" } %>
-  </p>
-<% end %>
+  <%= form_for [@road, @comment] do |f| %>
+    <%= f.text_field :content %>
+    <br>
+    <%= f.submit 'コメントする' %>
+  <% end %>
 
-<h2>コメント一覧</h2>
-<% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= @road.user.id %>"><%= c.user.name %></a>
-    <%= c.content %>
-    <hr>
-  </div>
-<% end %>
+  <p><%= link_to "投稿一覧へ", roads_path %></p>
+</div>
 
-<%= form_for [@road, @comment] do |f| %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
 
-<p><%= link_to "投稿一覧へ", roads_path %></p>
+
+
+
+
+
 
 <script>
 let mapInstance
@@ -83,7 +103,7 @@ function initMap() {
   });
 }
 
-// 
+
 function codeAddress() {
   let inputAddress = document.getElementById('address').value;
 
@@ -115,9 +135,4 @@ function codeAddress() {
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
-<style>
-#map {
-  height: 450px;
-  width: 450px;
-}
-</style>
+

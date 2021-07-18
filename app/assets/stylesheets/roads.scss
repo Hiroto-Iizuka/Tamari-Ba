@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+body {
+  color: #002550;
+}
+
+// index
+
 // カード
 
 .card-title {
@@ -56,4 +62,16 @@ input[type="search"] {
 .search-field {
   font-size: 12px;
   padding-left: 5px;
+}
+
+
+// show
+
+#map {
+  height: 300px;
+  width: 300px;
+}
+
+a {
+  color: #002550;
 }
