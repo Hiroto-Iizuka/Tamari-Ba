@@ -77,10 +77,12 @@ a {
 }
 
 .comment-form {
+  resize: none;
   width: 300px;
   height: 160px;
 }
 
 .comment-btn {
   margin-top: 10px;
+  text-align: right;
 }
