@@ -1,23 +1,51 @@
-<h1>編集</h1>
+<div class="container mx-auto">
+  <h3 class="text-center py-5">編集</h3>
 
-<div id="map"></div>
+  <div class="search text-center mt-3">
+    <input id="address" class="area-search" type="textbox" placeholder="検索してマップを移動できます">
+    <input class="mx-auto" type="button" value="検索" onclick="searchArea()">
+  </div>
 
-<%= form_with model: @road, local: true do |f| %>
-    <p>緯度: <%=f.text_field :latitude %></p>
-    <p>経度: <%=f.text_field :longitude %></p>
-    <% if @road.road_images.present? %>
-      <p>現在投稿されている画像(削除するものはチェックしてください)</p>
-      <% @road.road_images.each do |image| %>
-      <p>
-        <%= f.check_box :road_image_ids, {multiple: true}, image.id, false %>
-        <%= image_tag image, width: '35%', height: '35%' %>
+  <div id="map" class="mx-auto mt-3"></div>
+
+  <%= form_with model: @road, local: true do |f| %>
+    <div class="d-flex mt-3">
+      <p class="mx-auto">
+        緯度: <%=f.text_field :latitude, class: "latlng-field mx-auto" %>
+        経度: <%=f.text_field :longitude, class: "latlng-field mx-auto" %>
       </p>
+    </div>
+
+      <% if @road.road_images.present? %>
+        <p class="text-center">現在投稿されている画像(削除するものはチェックしてください)</p>
+        <% @road.road_images.each do |image| %>
+        <p class="d-flex justify-content-center">
+          <%= f.check_box :road_image_ids, {multiple: true}, image.id, false %>
+          <%= image_tag image, width: '35%', height: '35%' %>
+        </p>
+        <% end %>
       <% end %>
-    <% end %>
-    <p>タイトル:<%= f.text_field :title %></p>
-    <p>コメント:<%= f.text_field :description %></p>
-    <%= f.submit '更新する' %>
-<% end %>
+    
+    <div class="row mt-3">
+      <div class="text-center">
+        <%= f.label :title, "タイトル: " %>
+        <div class="text-center">
+          <p><%= f.text_field :title %></p>
+        </div>
+      </div>
+    </div>
+    <div clas="row mt-3">
+      <%= f.label :description, "説明文: " %>
+      <p><%= f.text_area :description, class: "description-field" %></p>
+    </div>
+    <div class="row mt-3">
+      <div class="mx-0">
+        <%= f.submit '更新する', class: "btn btn-outline-primary submit-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 
 <script>
 let mapInstance
@@ -71,6 +99,20 @@ function getClickLatLng(latlng, mapInstance) {
 }
 
 
+function searchArea() {
+  // 検索フォームの入力内容を取得
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress }, function(results, status) {
+    // 該当する検索結果がヒットした時に、地図の中心を検索結果の緯度経度に更新
+    if (status == 'OK') {
+      mapInstance.setCenter(results[0].geometry.location);
+    } else {
+      // 検索結果がなかった場合に表示
+      alert('該当する結果がありませんでした:' + status);
+    }
+  }); 
+}
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
