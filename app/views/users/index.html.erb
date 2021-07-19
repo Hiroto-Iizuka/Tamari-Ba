@@ -1,28 +1,38 @@
-<h1>ユーザー一覧</h1>
+<div class="container">
+  <h2 class="text-center py-5">ユーザー一覧</h2>
 
-<% @users.each do |user| %>
-  <% if user.name == "管理者" %>
-    <% next %>
-  <% else %>
-    
-    <p>ID: <%= user.id %></p>
-    <% if user.avatar.attached? %>
-      <%= image_tag user.avatar, width: '120px', heifht: '120px' %>
-    <% else %>
-      <%= image_tag "noimage.png", width: '120px', height: '120px' %>
-    <% end %>
-    <p>ユーザー名: <%= user.name %></p>
-    <p>バイク: <%= user.bike_name %></p>
-    <% if user.prefecture_id == nil %>
-      <p>都道府県: <%= "---" %></p>
-    <% else %>
-      <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
-    <% end %>
 
-    <%= link_to "詳細", user_path(user.id) %>
-    <br>
-    
+  <% @users.each do |user| %>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+            <% if user.avatar.attached? %>
+              <%= image_tag user.avatar, width: '200px', heifht: '200px' %>
+            <% else %>
+              <%= image_tag "noimage.png", width: '200px', height: '200px' %>
+            <% end %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              <p>ID: <%= user.id %></p>
+              <p>ユーザー名: <%= user.name %></p>
+              <p>バイク: <%= user.bike_name %></p>
+
+              <% if user.prefecture_id == nil %>
+                <p>都道府県: <%= "---" %></p>
+              <% else %>
+                <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
+              <% end %>
+
+              <%= link_to "詳細", user_path(user.id) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-<% end %>
+</div>
+
 
 <%= paginate @users %>
