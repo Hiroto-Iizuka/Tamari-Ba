@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: Tamari_Ba_production
-  username: Tamari_Ba
-  password: <%= ENV['TAMARI_BA_DATABASE_PASSWORD'] %>
+  database: tamari_ba_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
