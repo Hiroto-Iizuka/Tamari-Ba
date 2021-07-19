@@ -4,8 +4,8 @@ lock "~> 3.16.0"
 set :application, "tamari_ba"
 set :repo_url, "git@github.com:Hiroto-Iizuka/Tamari-Ba.git"
 set :rbenv_ruby, File.read('.ruby-version').strip
-set :branch, ENV['BRANCH'] || "main"
-# set :branch, "main"
+# set :branch, ENV['BRANCH'] || "main"
+set :branch, "main"
 
 # Nginxの設定ファイル名と置き場所を修正
 set :nginx_config_name, "#{fetch(:application)}.conf"
