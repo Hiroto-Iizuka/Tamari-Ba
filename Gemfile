@@ -22,8 +22,10 @@ gem 'jquery-rails'
 gem 'seed-fu'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+gem 'aws-sdk-s3', require: false
 gem 'kaminari'
 gem 'ransack'
+
 
 
 group :development, :test do
