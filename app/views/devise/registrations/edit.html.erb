@@ -1,91 +1,98 @@
-<h2>アカウント編集</h2>
+<div class="container user-container my-5">
+  <h2 class="text-center">アカウント編集</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="text-center">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :プロフィール写真 %><br>
-    <%= f.file_field :avatar %>
-  </div>
+      <div class="field my-4">
+        <%= f.label :プロフィール写真 %><br>
+        <%= f.file_field :avatar %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+      <div class="field my-4 login-form">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="field my-4">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.text_field :age %>
-  </div>
+      <div class="field my-4">
+        <%= f.label :age %><br>
+        <%= f.text_field :age %>
+      </div>
 
-  <div class="field">
-    <%= f.label :prefecture %>
-    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択してください' %>
-  </div>
+      <div class="field my-4">
+        <%= f.label :prefecture %>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択してください' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :gender %><br>
-    <label><%= f.radio_button :gender, "0" %> 男性 </label>
-    <label><%= f.radio_button :gender, "1" %> 女性 </label>
-    <label><%= f.radio_button :gender, "2" %> その他 </label>
-    <label><%= f.radio_button :gender, "9" %> 答えたくない </label>
-  </div>
+      <div class="field my-4">
+        <%= f.label :gender %><br>
+        <label><%= f.radio_button :gender, "0" %> 男性 </label>
+        <label><%= f.radio_button :gender, "1" %> 女性 </label>
+        <label><%= f.radio_button :gender, "2" %> その他 </label>
+        <label><%= f.radio_button :gender, "9" %> 答えたくない </label>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field my-4">
+        <%= f.label :password %>変更<br>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上のパスワード" %>
+        <% if @minimum_password_length %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="field mt-5 mb-4">
+        <%= f.label :bike_type %><br>
+        <label><%= f.radio_button :bike_type, "ネイキッド" %> ネイキッド </label>
+        <label><%= f.radio_button :bike_type, "SS" %> SS </label>
+        <label><%= f.radio_button :bike_type, "クルーザー" %> クルーザー </label>
+        <label><%= f.radio_button :bike_type, "オフロード" %> オフロード </label>
+        <label><%= f.radio_button :bike_type, "原付" %> 原付 </label>
+        <label><%= f.radio_button :bike_type, "スクーター" %> スクーター </label>
+      </div>
+
+      <div class="field my-4">
+        <%= f.label :bike_name %><br>
+        <%= f.text_field :bike_name %>
+      </div>
+
+      <div class="field my-4">
+        <%= f.label :engine_size %><br>
+        <%= f.text_field :engine_size %>
+      </div>
+
+      <div class="field my-4">
+        <%= f.label :experience_years %><br>
+        <%= f.text_field :experience_years %>
+      </div>
+
+      <div class="field mt-4 mb-5">
+        <%= f.label :through %><br>
+        <label><%= f.radio_button :through, "false" %> 不可 </label>
+        <label><%= f.radio_button :through, "true" %> 可 </label>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="actions">
+        <%= f.submit "更新", class: "btn btn-outline-primary execute-btn" %>
+      </div>
+    </div>
   <% end %>
+  
+  <div class="text-center">
+    <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn warning-btn" %></p>
 
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <em>＊<%= @minimum_password_length %>文字以上</em>
-    <% end %>
+    <%= link_to "トップページ", root_path %>
   </div>
-
-  <div class="field">
-    <%= f.label :bike_type %><br>
-    <label><%= f.radio_button :bike_type, "ネイキッド" %> ネイキッド </label>
-    <label><%= f.radio_button :bike_type, "SS" %> SS </label>
-    <label><%= f.radio_button :bike_type, "クルーザー" %> クルーザー </label>
-    <label><%= f.radio_button :bike_type, "オフロード" %> オフロード </label>
-    <label><%= f.radio_button :bike_type, "原付" %> 原付 </label>
-    <label><%= f.radio_button :bike_type, "スクーター" %> スクーター </label>
-  </div>
-
-  <div class="field">
-    <%= f.label :bike_name %><br>
-    <%= f.text_field :bike_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :engine_size %><br>
-    <%= f.text_field :engine_size %>
-  </div>
-
-  <div class="field">
-    <%= f.label :experience_years %><br>
-    <%= f.text_field :experience_years %>
-  </div>
-
-  <div class="field">
-    <%= f.label :through %><br>
-    <label><%= f.radio_button :through, "false" %> 不可 </label>
-    <label><%= f.radio_button :through, "true" %> 可 </label>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-
-<h3>アカウント削除</h3>
-
-<p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "戻る", root_path %>
+</div>

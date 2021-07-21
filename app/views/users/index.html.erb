@@ -1,34 +1,36 @@
-<div class="container">
+<div class="container index-container">
   <h2 class="text-center py-5">ユーザー一覧</h2>
 
 
   <% @users.each do |user| %>
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card user-card" style="max-width: 540px;">
       <div class="row no-gutters">
-        <div class="col-md-4">
-            <% if user.avatar.attached? %>
-              <%= image_tag user.avatar, width: '200px', heifht: '200px' %>
+
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar, width: '200px', heifht: '200px' %>
+        <% else %>
+          <%= image_tag "noimage.png", width: '200px', height: '200px' %>
+        <% end %>
+
+        <div class="card-body">
+          <h5 class="card-title">
+            <p>ユーザー名: <%= user.name %></p>
+            <% if user.bike_name == nil %>
+              <p>バイク: ------</p>
             <% else %>
-              <%= image_tag "noimage.png", width: '200px', height: '200px' %>
-            <% end %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">
-              <p>ID: <%= user.id %></p>
-              <p>ユーザー名: <%= user.name %></p>
               <p>バイク: <%= user.bike_name %></p>
+            <% end %>
 
-              <% if user.prefecture_id == nil %>
-                <p>都道府県: <%= "---" %></p>
-              <% else %>
-                <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
-              <% end %>
+            <% if user.prefecture_id == nil %>
+              <p>都道府県: ------</p>
+            <% else %>
+              <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
+            <% end %>
 
-              <%= link_to "詳細", user_path(user.id) %>
-            </div>
+            <%= link_to "詳細", user_path(user.id), class: "btn btn-primary user-show-btn" %>
           </div>
         </div>
+
       </div>
     </div>
   <% end %>
