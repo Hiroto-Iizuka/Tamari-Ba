@@ -4,35 +4,31 @@ ja:
       models:
         user:
           attributes:
+            username:
+              blank: "を入力してください"
+              too_long: "は%{count}文字以下に設定して下さい。"
             email:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
             password:
-              taken: "は既に使用されています。"
               blank: "が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
+              too_short: "は6文字以上に設定して下さい。"
               invalid: "は有効でありません。"
+            password_confirmation:
               confirmation: "が内容とあっていません。"
     attributes:
       user:
         current_password: "現在のパスワード"
-        name: 名前
+        name: "アカウント名"
         email: "メールアドレス"
-        age: "年齢"
-        gender: "性別"
         password: "パスワード"
-        bike_type: "車種"
-        bike_name: "愛車名"
-        engine_size: "排気量"
-        experience_years: "バイク歴"
-        through: "すり抜け可否"
+        password_confirmation: "確認用パスワード"
+        username: "ユーザー名"
+        remember_me: "ログインを記憶"
     models:
-      user: "ユーザ"
-  devise:
+      user: "ユーザー"
+  users:
     confirmations:
       new:
         resend_confirmation_instructions: "アカウント確認メール再送"
@@ -72,6 +68,7 @@ ja:
         update: "更新"
         we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください"
       new:
+        name: "名前"
         sign_up: "アカウント登録"
     sessions:
       new:
@@ -85,6 +82,8 @@ ja:
         sign_in: "ログイン"
         sign_in_with_provider: "%{provider}でログイン"
         sign_up: "アカウント登録"
+        forgot_your_password: "パスワードを忘れましたか?"
+
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"

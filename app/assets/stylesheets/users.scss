@@ -1,3 +1,41 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container {
+  border: 1.5px solid #002550;
+  padding: 50px;
+}
+
+.login-btn {
+  width: 300px;
+  height: 40px;
+  color: #FFF;
+  background-color: #002550;
+  border: none;
+  &:hover {
+    background-color: #FFF;
+    color: #002550;
+    border: 1.5px solid #002550;
+  }
+}
+
+input[type="text"] {
+  width: 300px;
+  height: 40px;
+}
+
+input[type="email"] {
+  width: 300px;
+  height: 40px;
+}
+
+input[type="password"] {
+  width: 300px;
+  height: 40px;
+}
+
+.forgot-link {
+  font-size: 10px;
+  border-bottom: 1px solid;
+}
