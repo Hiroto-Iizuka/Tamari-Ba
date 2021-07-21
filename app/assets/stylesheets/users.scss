@@ -7,6 +7,10 @@
   padding: 50px;
 }
 
+.index-container {
+  border: none;
+}
+
 .login-btn {
   width: 300px;
   height: 40px;
@@ -38,4 +42,23 @@ input[type="password"] {
 .forgot-link {
   font-size: 10px;
   border-bottom: 1px solid;
+}
+
+.card {
+  height: 200px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.user-show-btn {
+  color: #FFF;
+  background-color: #002550;
+  border: none;
+    &:hover {
+      background-color: #FFF;
+      color: #002550;
+      border: 1.5px solid #002550;
+  }
 }
