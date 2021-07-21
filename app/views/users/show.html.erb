@@ -19,43 +19,56 @@
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end %>
 
-<h1>プロフィール</h1>
+<div class="container user-container my-5">
+  <h2 class="text-center py-5">ユーザー情報</h2>
 
-<h3>ユーザー情報</h3>
-<% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar, width: '120px', heifht: '120px' %>
-<% else %>
-  <%= image_tag "noimage.png", width: '100px', height: '100px' %>
-<% end %>
-<p>ユーザー名: <%= @user.name %></p>
-<p>年齢: <%= @user.age %>歳</p>
-<% if @user.gender == 0 %>
-  <% gender = "男性" %>
-<% elsif @user.gender == 1 %>
-  <% gender = "女性" %>
-<% elsif @user.gender == 2 %>
-  <% gender = "その他" %>
-<% elsif @user.gender == 9 %>
-  <% gender = "答えたくない" %>
-<% else %>
-  <% gender = "不明" %>
-<% end %>
-<p>性別: <%= gender %></p>
-<% if @user.prefecture_id == nil %>
-  <p>都道府県: <%= "---" %></p>
-<% else %>
-  <p>都道府県: <%= @prefecture.name %></p>
-<% end %>
+  <div class="container text-center">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, width: '300px', heifht: '300px', class: "mx-0" %>
+    <% else %>
+      <%= image_tag "noimage.png", width: '300px', height: '300px', class: "mx-0" %>
+    <% end %>
+  </div>
 
-<h3>バイク</h3>
-<p>タイプ: <%= @user.bike_type %></p>
-<p>バイク名: <%= @user.bike_name %></p>
-<p>排気量: <%= @user.engine_size %>cc</p>
+  <div class="container text-center">
+    <h4 class="text-center">ユーザー</h4>
+    <p>ユーザー名: <%= @user.name %></p>
+    <p>年齢: <%= @user.age %>歳</p>
+    <% if @user.gender == 0 %>
+      <% gender = "男性" %>
+    <% elsif @user.gender == 1 %>
+      <% gender = "女性" %>
+    <% elsif @user.gender == 2 %>
+      <% gender = "その他" %>
+    <% elsif @user.gender == 9 %>
+      <% gender = "答えたくない" %>
+    <% else %>
+      <% gender = "不明" %>
+    <% end %>
+    <p>性別: <%= gender %></p>
+    <% if @user.prefecture_id == nil %>
+      <p>都道府県: <%= "------" %></p>
+    <% else %>
+      <p>都道府県: <%= @prefecture.name %></p>
+    <% end %>
+  </div>
+  <br>
 
-<h3>スキル</h3>
-<p>バイク歴: <%= @user.experience_years %>年</p>
-<% if @user.through == true %>
-  <p>すり抜け: 可</p>
-<% else %>
-  <p>すり抜け: 不可</p>
-<% end %>
+  <div class="container text-center">
+    <h4>バイク</h4>
+    <p>タイプ: <%= @user.bike_type %></p>
+    <p>バイク名: <%= @user.bike_name %></p>
+    <p>排気量: <%= @user.engine_size %>cc</p>
+  </div>
+  <br>
+
+  <div class="container text-center">
+    <h4>スキル</h4>
+    <p>バイク歴: <%= @user.experience_years %>年</p>
+    <% if @user.through == true %>
+      <p>すり抜け: 可</p>
+    <% else %>
+      <p>すり抜け: 不可</p>
+    <% end %>
+  </div>
+</div>
