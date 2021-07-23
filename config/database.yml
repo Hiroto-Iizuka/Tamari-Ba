@@ -1,22 +1,14 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+  pool: 5
+  host:     <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
-  database: Tamari_Ba_development
-
-
-test:
-  <<: *default
-  database: Tamari_Ba_test
-
-
 production:
   <<: *default
-  database: tamari_ba_production
-  username: postgres
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV['DATABASE_HOSTNAME'] %>
+staging:
+  <<: *default
