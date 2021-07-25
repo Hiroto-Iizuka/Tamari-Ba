@@ -9,7 +9,7 @@
     <div id="map" class="mx-auto mt-3"></div>
 
   <%= form_with model: @road, local: true do |f| %>
-    <div class="d-flex mt-3">
+    <div class="d-flex justify-content-center mt-3">
       <p class="mx-auto">
         緯度: <%=f.text_field :latitude, class: "latlng-field" %>
         経度: <%=f.text_field :longitude, class: "latlng-field" %>
