@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   
-  root :to => 'roads#index'
+  root :to => 'home#index'
 
   resources :roads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :comments, only: [:create]
