@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show]
 
-
-  
   root :to => 'home#index'
 
   resources :roads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
