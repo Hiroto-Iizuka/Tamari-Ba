@@ -13,7 +13,9 @@
 
   <body>
     <header>
-      <%= render 'layouts/header' %>
+      <% unless request.path.in?(["/"]) %>
+        <%= render 'layouts/header' %>
+      <% end %>
     </header>
     <%= render "layouts/flash" %>
     <%= yield %>

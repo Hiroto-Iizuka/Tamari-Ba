@@ -1,0 +1,52 @@
+:root {
+  --text-color: #FFFFFF;
+}
+
+
+.title-text {
+  color: var(--text-color);
+}
+
+.sub-text {
+  color: var(--text-color);
+}
+
+.main-content {
+  color: var(--text-color);
+}
+
+.warning-btn {
+  width: 300px;
+  height: 40px;
+  color: #002550;
+  background-color: #FFED00;
+  border-color: #FFED00;
+  &:hover {
+    background: rgba(255, 237, 0, 0.1);
+    color: #FFED00;
+    border: 1.5px solid #FFED00;
+  }
+}
+
+.page-section {
+  background-color: #002550;
+  height: 800px;
+  width: 100%;
+}
+
+.main-container {
+  background-image: image-url('tamari_ba_top');
+  height: 800px;
+  width: 100%;
+  background-size: cover;
+}
+
+.overlay:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
