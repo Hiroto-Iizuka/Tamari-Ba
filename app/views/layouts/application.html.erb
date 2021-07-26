@@ -13,12 +13,8 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      <% unless request.path.in?(["/"]) %>
         <%= render 'layouts/header' %>
-      <% else %>
-        <% unless request.path.in?(["/"]) %>
-          <%= render 'layouts/header' %>
-        <% end %>
       <% end %>
     </header>
     <%= render "layouts/flash" %>

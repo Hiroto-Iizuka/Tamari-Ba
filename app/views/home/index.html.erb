@@ -11,12 +11,16 @@
               </div>
               <div class="col-lg-8 align-self-baseline">
                   <p class="sub-text">Tamari-Baは全国のバイク乗りのおすすめスポットを投稿するWEBアプリ。<br>バイク乗りのTamari-Baで自分の好きな峠、シーサイド、道の駅などについて語ろう。</p>
-                  <div class="my-3">
-                    <%= link_to "ログインはこちら", user_session_path, class: "btn warning-btn" %>
-                  </div>
-                  <div class="my-3">
-                    <%= link_to "ゲストログイン(採用担当者様)", users_guest_sign_in_path, method: :post, class: "btn warning-btn" %>
-                  </div>
+                  <% if user_signed_in? %>
+                    <%= link_to "アプリトップへ", roads_path, class: "btn warning-btn" %>
+                  <% else %>
+                    <div class="my-3">
+                      <%= link_to "ログインはこちら", user_session_path, class: "btn warning-btn" %>
+                    </div>
+                    <div class="my-3">
+                      <%= link_to "ゲストログイン(採用担当者様)", users_guest_sign_in_path, method: :post, class: "btn warning-btn" %>
+                    </div>
+                  <% end %>
               </div>
           </div>
       </div>
