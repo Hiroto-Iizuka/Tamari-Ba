@@ -1,72 +1,68 @@
-<body id="page-top">
-  <!-- Masthead-->
-  <div class="site-blocks-cover overlay">
-    <header class="masthead main-container">
-    
-      <div class="container px-4 px-lg-5 h-100">
-          <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-              <div class="col-lg-8 align-self-end">
-                  <h1 class="title-text">Tamari-Ba</h1>
-                  <hr class="divider" />
-              </div>
-              <div class="col-lg-8 align-self-baseline">
-                  <p class="sub-text">Tamari-Baは全国のバイク乗りのおすすめスポットを投稿するWEBアプリ。<br>バイク乗りのTamari-Baで自分の好きな峠、シーサイド、道の駅などについて語ろう。</p>
-                  <% if user_signed_in? %>
-                    <%= link_to "アプリトップへ", roads_path, class: "btn warning-btn" %>
-                  <% else %>
-                    <div class="my-3">
-                      <%= link_to "ログインはこちら", user_session_path, class: "btn warning-btn" %>
-                    </div>
-                    <div class="my-3">
-                      <%= link_to "ゲストログイン(採用担当者様)", users_guest_sign_in_path, method: :post, class: "btn warning-btn" %>
-                    </div>
-                  <% end %>
-              </div>
-          </div>
+<!-- Masthead-->
+<div class="main-container overlay">
+  <div class="container px-4 px-lg-5 h-100">
+    <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+      <div class="col-lg-8 align-self-end">
+          <h1 class="title-text">Tamari-Ba</h1>
+          <hr class="divider" />
       </div>
-  </div>
-  </header>
-  <!-- About-->
-  <section class="page-section content-list" id="about">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col text-center">
-              <h2 class="text-white mt-0 py-5">What is Tamari-Ba?</h2>
-          </div>
+      <div class="col-lg-8 align-self-baseline">
+          <p class="sub-text">Tamari-Baは全国のバイク乗りのおすすめスポットを投稿するWEBアプリ。<br>バイク乗りのTamari-Baで自分の好きな峠、シーサイド、道の駅などについて語ろう。</p>
+          <% if user_signed_in? %>
+            <%= link_to "アプリトップへ", roads_path, class: "btn warning-btn" %>
+          <% else %>
+            <div class="my-3">
+              <%= link_to "ログインはこちら", user_session_path, class: "btn warning-btn" %>
+            </div>
+            <div class="my-3">
+              <%= link_to "ゲストログイン(採用担当者様)", users_guest_sign_in_path, method: :post, class: "btn warning-btn" %>
+            </div>
+          <% end %>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="container py-5">
-      <div class="row col">
-        <% @roads_latest3.each do |road| %>
-          <div class="col mb-4">
-            <div class="card-group display: fixed;" >
-              <div class="card d-flex" style="width: 18rem;">
-              
-                <div class="card-img-top">
-                  <% if road.road_images.attached? %>
-                    <%= image_tag(road.road_images.first, class: "show-img-link") %>
-                  <% else %>
-                    <%= image_tag("noimage-road.png", class:"show-img-link") %>
-                  <% end %>
-                </div>  
+<!-- About-->
+<section class="page-section content-list" id="about">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col text-center">
+            <h2 class="text-white mt-0 py-5">What is Tamari-Ba?</h2>
+        </div>
+    </div>
+  </div>
 
-                <div class="card-body mb-4">
-                  <h5 class="card-title"><%= road.title %></h5>
-                  <p class="card-content"><%= road.description.truncate(15, omission: '...') %></p> 
-                </div>
-                <div class="d-flex justify-content-between mx-3">
-                  <p class="user-name">by <%= road.user.name %></p>
-                </div>
+  <div class="container py-5">
+    <div class="row col">
+      <% @roads_latest3.each do |road| %>
+        <div class="col mb-4">
+          <div class="card-group display: fixed;" >
+            <div class="card d-flex" style="width: 18rem;">
+            
+              <div class="card-img-top">
+                <% if road.road_images.attached? %>
+                  <%= image_tag(road.road_images.first, class: "show-img-link") %>
+                <% else %>
+                  <%= image_tag("noimage-road.png", class:"show-img-link") %>
+                <% end %>
+              </div>  
+
+              <div class="card-body mb-4">
+                <h5 class="card-title"><%= road.title %></h5>
+                <p class="card-content"><%= road.description.truncate(15, omission: '...') %></p> 
+              </div>
+              <div class="d-flex justify-content-between mx-3">
+                <p class="user-name">by <%= road.user.name %></p>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-  </section>
-  <!-- Footer-->
-  <footer class="bg-light py-5">
-      <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2021 - Hiroto Iizuka</div></div>
-  </footer>
-</body>
+  </div>
+</section>
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2021 - Hiroto Iizuka</div></div>
+</footer>
