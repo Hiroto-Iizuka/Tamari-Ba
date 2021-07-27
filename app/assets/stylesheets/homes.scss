@@ -32,6 +32,8 @@
   background-color: #002550;
   height: 800px;
   width: 100%;
+  background-size: cover;
+
 }
 
 .main-container {
@@ -49,4 +51,5 @@
     right: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.4);
+    height: 800px;
 }
