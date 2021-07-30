@@ -41,8 +41,9 @@ class RoadsController < ApplicationController
   end
 
   def destroy
-    road = Road.find(params[:id])
-    road.destroy
+    Road.find(params[:id]).destroy
+    flash[:success] = "投稿を削除しました。"
+    redirect_to roads_path
   end
 
   private
