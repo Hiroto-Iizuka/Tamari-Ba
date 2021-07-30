@@ -73,6 +73,7 @@ function initMap() {
 
     // クリックしたときに関数を実行
   mapInstance.addListener('click', function(e) {
+    deleteMarker();
     getClickLatLng(e.latLng, mapInstance);
     });
   }
@@ -83,12 +84,20 @@ function getClickLatLng(latlng, mapInstance) {
   document.getElementById('road_latitude').value = latlng.lat();
   document.getElementById('road_longitude').value = latlng.lng();
 
-  var marker = new google.maps.Marker({
+  marker = new google.maps.Marker({
     position: latlng,
     map: mapInstance
   });
 
   mapInstance.panTo(latlng);
+}
+
+// 既にあるマーカーの削除
+function deleteMarker() {
+  if(marker != null){
+    marker.setMap(null);
+  }
+  marker = null;
 }
 
 
