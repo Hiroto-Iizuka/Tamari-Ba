@@ -18,6 +18,8 @@ class RoadsController < ApplicationController
 
   def create
     @road = Road.create(road_params)
+    flash[:success] = "投稿しました"
+    redirect_to roads_path
   end
 
   def edit
@@ -42,7 +44,7 @@ class RoadsController < ApplicationController
 
   def destroy
     Road.find(params[:id]).destroy
-    flash[:success] = "投稿を削除しました。"
+    flash[:success] = "投稿を削除しました"
     redirect_to roads_path
   end
 
