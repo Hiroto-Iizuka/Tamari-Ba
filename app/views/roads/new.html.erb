@@ -6,7 +6,9 @@
     <input type="button" value="検索" onclick="searchArea()">
   </div>
 
-    <div id="map" class="mx-auto mt-3"></div>
+  <p class="text-center mt-5">登録したい箇所をクリックして、マーカーを設置してください。(1つまで)</p>
+
+  <div id="map" class="mx-auto mt-3"></div>
 
   <%= form_with model: @road, local: true do |f| %>
     <div class="d-flex justify-content-center mt-3">

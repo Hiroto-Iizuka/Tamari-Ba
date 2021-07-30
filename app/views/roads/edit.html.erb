@@ -1,11 +1,13 @@
-<div class="container mx-auto">
-  <h3 class="text-center py-5">編集</h3>
+<div class="container py-5 mx-auto">
+  <h3 class="text-center">編集</h3>
 
   <div class="search text-center mt-3">
     <input id="address" class="area-search" type="textbox" placeholder="検索してマップを移動できます">
     <input class="mx-auto" type="button" value="検索" onclick="searchArea()">
   </div>
 
+
+  <p class="text-center mt-5">マーカーを更新したい場合は設置したい場所をクリックしてください。</p>
   <div id="map" class="mx-auto mt-3"></div>
 
   <%= form_with model: @road, local: true do |f| %>
@@ -21,7 +23,7 @@
         <% @road.road_images.each do |image| %>
         <p class="d-flex justify-content-center">
           <%= f.check_box :road_image_ids, {multiple: true}, image.id, false %>
-          <%= image_tag image, width: '35%', height: '35%' %>
+          <%= image_tag image, width: '300px', height: '200px' %>
         </p>
         <% end %>
       <% end %>
@@ -29,7 +31,7 @@
       <div class="text-center">
         <%= f.label :title, "タイトル" %>
         <div class="text-center">
-          <p><%= f.text_field :title %></p>
+          <p><%= f.text_field :title, class: "title-field" %></p>
         </div>
         <%= f.label :description, "説明文" %>
         <p><%= f.text_area :description, class: "description-field" %></p>
