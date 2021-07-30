@@ -28,6 +28,7 @@
 
 <script>
 let mapInstance = {};
+let marker;
 const tokyoStationLat = 35.6809591
 const tokyoStationLng = 139.7673068
 
@@ -47,12 +48,16 @@ function initMap() {
   }
 
 
-// 住所、座標を取得
+// 住所、座標を取得してマーカー設置
 function getClickLatLng(latlng, mapInstance) {
   document.getElementById('road_latitude').value = latlng.lat();
   document.getElementById('road_longitude').value = latlng.lng();
 
-  var marker = new google.maps.Marker({
+  // 既存のマーカーの削除
+  deleteMarker();
+
+  // マーカー設置
+  marker = new google.maps.Marker({
     position: latlng,
     map: mapInstance
   });
@@ -60,8 +65,15 @@ function getClickLatLng(latlng, mapInstance) {
   mapInstance.panTo(latlng);
 }
 
-let geocoder
+// 既にあるマーカーの削除
+function deleteMarker() {
+  if(marker != null){
+    marker.setMap(null);
+  }
+  marker = null;
+}
 
+let geocoder
 
 function searchArea() {
   // 検索フォームの入力内容を取得
