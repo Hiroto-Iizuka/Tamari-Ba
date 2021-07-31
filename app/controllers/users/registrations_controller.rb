@@ -53,7 +53,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     if resource.email == "guest@example.com"
-      redirect_to root_path, alert: "ゲストユーザーは更新・削除できません"
+      flash[:danger] = "ゲストユーザーは更新・削除できません"
+      redirect_to roads_path
     else
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :age, :gender, :bike_type, :bike_name, :engine_size, :experience_years, :through, :prefecture_id, :avatar])
     end

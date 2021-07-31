@@ -3,6 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   def guest_sign_in
     sign_in User.guest
-    redirect_to roads_path, notice: "ゲストユーザーとしてログインしました。"
+    flash[:success] = "ゲストユーザーとしてログインしました。"
+    redirect_to roads_path
   end
 end
