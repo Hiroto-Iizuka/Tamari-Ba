@@ -18,7 +18,7 @@ class RoadsController < ApplicationController
 
   def create
     @road = Road.create(road_params)
-    flash[:success] = "投稿しました"
+    flash[:success] = "投稿が完了しました"
     redirect_to roads_path
   end
 
@@ -35,8 +35,8 @@ class RoadsController < ApplicationController
       end
     end
     if road.update(road_params)
-      flash[:success] = "編集しました"
-      redirect_to roads_url
+      flash[:success] = "投稿を編集しました"
+      redirect_to roads_path
     else
       render :edit
     end
