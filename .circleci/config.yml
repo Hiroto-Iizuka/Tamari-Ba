@@ -6,7 +6,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "f6:de:be:fc:6e:8c:4f:33:73:3b:e3:cd:10:04:52:f2"
+            - "3a:bd:9e:5a:57:f6:4f:a2:7d:6a:37:71:9b:b1:b6:03"
       - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "/var/www/Tamari-Ba/deploy.sh"
  
 workflows:
