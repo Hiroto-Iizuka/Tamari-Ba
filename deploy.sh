@@ -1,2 +1,1 @@
-cd /var/www/Tamari-Ba/ && git pull
-gem install bundler install && bundle install
+cd /var/www/Tamari-Ba/ && git pull && bundle install
