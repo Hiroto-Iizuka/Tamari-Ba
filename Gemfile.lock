@@ -169,6 +169,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
+    mysql2 (0.5.3)
     nio4r (2.5.7)
     nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
@@ -178,7 +179,6 @@ GEM
     nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -344,7 +344,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.3)
   mini_magick
-  pg (~> 1.1)
+  mysql2 (~> 0.5)
   pry-byebug
   pry-doc
   pry-rails
