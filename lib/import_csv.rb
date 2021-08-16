@@ -24,21 +24,21 @@
 require "csv"
 
 class ImportCsv
+
   def self.import(path)
+    list = []
+
     CSV.foreach(path, headers: true) do |row|
-      User.create!(
-        name: row["name"],
-        email: row["email"],
-        age: row["age"],
-        password: row["password"],
-        gender: row["gender"],
-        prefecture_id: row["prefecture_id"],
-        bike_type: row["bike_type"],
-        bike_name: row["bike_name"],
-        engine_size: row["engine_size"],
-        experience_years: row["experience_years"],
-        through: row["through"]
-      )
+      list << row.to_h
     end
+    list
+  end
+
+  def self.user_data
+    list = import('db/csv_data/user_data.csv')
+
+    puts "インポート処理を開始"
+    User.create!(list)
+    puts "インポート完了！"
   end
 end
