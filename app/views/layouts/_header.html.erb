@@ -5,7 +5,7 @@
   </button>
   <% if user_signed_in? %>
     <div class="collapse navbar-collapse" id="responsiveMenu">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <%= link_to "トップページ", root_path, class: "nav-link" %>
         </li>
@@ -28,7 +28,7 @@
     </div>
   <% else %>
     <div class="callapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <li class="navbar-item active">
           <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
         </li>
