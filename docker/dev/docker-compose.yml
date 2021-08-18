@@ -1,0 +1,32 @@
+version: '2'
+services:
+  app:
+    container_name: rails-app
+    build: ./app/
+    image: rails-app
+    ports:
+      - '80:80'
+    volumes:
+      - ~/git/github/dev_rails:/var/www/app/
+    tty: true
+    depends_on:
+      - db
+  db:
+    container_name: tamariba
+    build: ./mysql/
+    image: tamariba
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_ROOT_PASSWORD: password
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./mysql/db_data:/var/lib/mysql
+  redis:
+    container_name: rails-redis
+    image: "redis:latest"
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redis/db_data:/data
