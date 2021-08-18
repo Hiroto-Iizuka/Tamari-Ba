@@ -1,9 +1,9 @@
 version: '2'
 services:
   app:
-    container_name: rails-app
+    container_name: tamari-ba
     build: ./app/
-    image: rails-app
+    image: tamari-ba
     ports:
       - '80:80'
     volumes:

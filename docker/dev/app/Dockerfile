@@ -40,7 +40,7 @@ RUN n 12.18.4
 RUN groupadd nginx
 RUN useradd -g nginx nginx
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
-ADD nginx/dev.adachin.com.conf /etc/nginx/conf.d/dev.rider-no-tamari-ba.com.conf
+ADD nginx/dev.rider-no-tamari-ba.com.conf /etc/nginx/conf.d/dev.rider-no-tamari-ba.com.conf
 
 ## supervisor
 RUN mkdir -p /var/log/supervisor
