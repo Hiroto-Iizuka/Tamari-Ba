@@ -19,7 +19,7 @@ services:
       - '3306:3306'
     environment:
       MYSQL_DATABASE: tamari_ba_dev
-      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 4evu.vdKXbfd
       TZ: "Asia/Tokyo"
     volumes:
       - ./mysql/db_data:/var/lib/mysql
