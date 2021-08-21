@@ -22,7 +22,7 @@ $ git clone git@github.com:Hiroto-Iizuka/Tamari-Ba.git
 - add localhost /etc/hosts
 
 ```
-$sudo vim /etc/hosts
+$sudo vi /etc/hosts
 
 以下に修正
 127.0.0.1 dev.rider-no-tamari-ba.com
@@ -32,16 +32,7 @@ $sudo vim /etc/hosts
 
 ```
 $ cd Tamari-Ba
-$ vi .env
-
-以下を追記
-GOOGLE_MAP_API_KEY=XXXXXXXXXXXXXX
-AMAZON_S3_BUCKET=XXXXXXXXXXXX
-DATABASE_HOST=db
-DATABASE_NAME=tamari_ba_dev
-DATABASE_USER=root
-DATABASE_PASSWORD=password
-DATABASE_SOCKET=/tmp/mysql.sock
+$ cp .env.sample .env
 ```
 
 - docker run
@@ -54,7 +45,7 @@ $ docker-compose up -d
 - app deploy
 
 ```
-$ docker exec -it tamari-ba bash
+$ docker exec -it tamari-ba-app bash
 
 $ yarn install
 $ bundle install
@@ -71,6 +62,6 @@ http://dev.rider-no-tamari-ba.com/
 - DB login
 
 ```
-docker exec -it tamari-ba bash
+docker exec -it tamari-ba-app bash
 mysql -u root -h db -p
 ```
