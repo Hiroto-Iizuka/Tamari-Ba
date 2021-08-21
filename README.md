@@ -22,7 +22,7 @@ $ git clone git@github.com:Hiroto-Iizuka/Tamari-Ba.git
 - add localhost /etc/hosts
 
 ```
-$ vi /etc/hosts
+$ sudo vi /etc/hosts
 
 以下に修正
 127.0.0.1 dev.rider-no-tamari-ba.com
