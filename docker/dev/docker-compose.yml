@@ -23,10 +23,3 @@ services:
       TZ: "Asia/Tokyo"
     volumes:
       - ./mysql/db_data:/var/lib/mysql
-  redis:
-    container_name: rails-redis
-    image: "redis:latest"
-    ports:
-      - '6379:6379'
-    volumes:
-      - ./redis/db_data:/data
