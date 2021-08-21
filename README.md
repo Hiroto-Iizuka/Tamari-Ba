@@ -16,6 +16,7 @@
 
 ```
 $ mkdir -p ~/git/github
+$ cd ~/git/github
 $ git clone git@github.com:Hiroto-Iizuka/Tamari-Ba.git
 ```
 
