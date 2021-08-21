@@ -1,9 +1,9 @@
 version: '2'
 services:
   app:
-    container_name: tamari-ba
+    container_name: tamari-ba-app
     build: ./app/
-    image: tamari-ba
+    image: tamari-ba-app
     ports:
       - '80:80'
     volumes:
