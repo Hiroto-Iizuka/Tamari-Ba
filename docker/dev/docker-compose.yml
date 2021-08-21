@@ -7,7 +7,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ~/git/github/tamari-ba:/var/www/app/
+      - ~/git/github/Tamari-Ba:/var/www/app/
     tty: true
     depends_on:
       - db
@@ -18,8 +18,8 @@ services:
     ports:
       - '3306:3306'
     environment:
-      MYSQL_DATABASE: ${DATABASE_HOST}
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: tamari_ba_dev
+      MYSQL_ROOT_PASSWORD: password
       TZ: "Asia/Tokyo"
     volumes:
       - ./mysql/db_data:/var/lib/mysql
