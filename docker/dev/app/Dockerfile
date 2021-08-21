@@ -18,7 +18,6 @@ RUN apt-get update -y && \
     nginx \
     supervisor \
     nodejs \
-    redis-tools \
     yarn \
     mariadb-client && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*

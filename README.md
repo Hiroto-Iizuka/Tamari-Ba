@@ -1,9 +1,7 @@
-## Tamari-Ba
-
 ## 開発環境構築手順
 
 ### インフラ構成図
-![Tamari-Baインフラ構成図](https://user-images.githubusercontent.com/69702983/130316526-ebb7cafd-59a0-4524-9066-e8f7db9ed590.png)
+![Tamari-Baインフラ構成図](https://user-images.githubusercontent.com/69702983/130326908-f732f5a6-2ed4-401f-b0f2-d1e63cc63347.png)
 
 - docker images
   - tamari-ba
@@ -16,13 +14,14 @@
 
 ```
 $ mkdir -p ~/git/github
+$ cd ~/git/github
 $ git clone git@github.com:Hiroto-Iizuka/Tamari-Ba.git
 ```
 
 - add localhost /etc/hosts
 
 ```
-$sudo vim /etc/hosts
+$ sudo vi /etc/hosts
 
 以下に修正
 127.0.0.1 dev.rider-no-tamari-ba.com
@@ -31,17 +30,8 @@ $sudo vim /etc/hosts
 - 環境変数
 
 ```
-$ cd Tamari-Ba
-$ vi .env
-
-以下を追記
-GOOGLE_MAP_API_KEY=XXXXXXXXXXXXXX
-AMAZON_S3_BUCKET=XXXXXXXXXXXX
-DATABASE_HOST=db
-DATABASE_NAME=tamari_ba_dev
-DATABASE_USER=root
-DATABASE_PASSWORD=password
-DATABASE_SOCKET=/tmp/mysql.sock
+$ cd ~/git/github/Tamari-Ba
+$ cp .env.sample .env
 ```
 
 - docker run
@@ -54,7 +44,7 @@ $ docker-compose up -d
 - app deploy
 
 ```
-$ docker exec -it tamari-ba bash
+$ docker exec -it tamariba-app bash
 
 $ yarn install
 $ bundle install
@@ -71,6 +61,6 @@ http://dev.rider-no-tamari-ba.com/
 - DB login
 
 ```
-docker exec -it tamari-ba bash
+docker exec -it tamariba-app bash
 mysql -u root -h db -p
 ```
