@@ -31,7 +31,7 @@ $sudo vi /etc/hosts
 - 環境変数
 
 ```
-$ cd Tamari-Ba
+$ cd ~/git/github/Tamari-Ba
 $ cp .env.sample .env
 ```
 
