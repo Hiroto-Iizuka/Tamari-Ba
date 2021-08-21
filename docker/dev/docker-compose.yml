@@ -1,9 +1,9 @@
 version: '2'
 services:
   app:
-    container_name: tamari-ba-app
+    container_name: tamariba-app
     build: ./app/
-    image: tamari-ba-app
+    image: tamariba-app
     ports:
       - '80:80'
     volumes:
@@ -12,9 +12,9 @@ services:
     depends_on:
       - db
   db:
-    container_name: tamariba
+    container_name: tamariba-db
     build: ./mysql/
-    image: tamariba
+    image: tamariba-db
     ports:
       - '3306:3306'
     environment:
