@@ -1,6 +1,5 @@
 <div class="container user-container my-5">
   <h2 class="text-center">アカウント編集</h2>
-
   <div class="text-center">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -48,9 +47,7 @@
         <% if @minimum_password_length %>
         <% end %>
       </div>
-    </div>
 
-    <div class="text-center">
       <div class="field mt-5 mb-4">
         <%= f.label :bike_type %><br>
         <label><%= f.radio_button :bike_type, "ネイキッド" %> ネイキッド </label>
@@ -81,18 +78,16 @@
         <label><%= f.radio_button :through, "false" %> 不可 </label>
         <label><%= f.radio_button :through, "true" %> 可 </label>
       </div>
-    </div>
 
-    <div class="text-center">
       <div class="actions">
         <%= f.submit "更新", class: "btn btn-outline-primary execute-btn", turbolinks: false %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   
-  <div class="text-center">
-    <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn warning-btn" %></p>
+    <div class="text-center">
+      <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn warning-btn" %></p>
 
-    <%= link_to "トップページ", root_path %>
+      <%= link_to "トップページ", root_path %>
+    </div>
   </div>
 </div>
