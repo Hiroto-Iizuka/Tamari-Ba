@@ -28,9 +28,13 @@
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col text-center">
-            <h2 class="text-white mt-0 py-5">What is Tamari-Ba?</h2>
+            <h2 class="title-text mt-0 py-5">What is Tamari-Ba?</h2>
         </div>
     </div>
+  </div>
+
+  <div class="text-center">
+    <h2 class="title-text py-5">最新の投稿</h2>
   </div>
 
   <div class="container py-5">
@@ -61,6 +65,61 @@
       <% end %>
     </div>
   </div>
+
+  <div class="text-center">
+    <h2 class="title-text py-5">機能紹介</h2>
+  </div>
+
+  <section id="feat">
+    <div class="container">
+      <div class="row features">
+        <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="100ms">
+          <%= image_tag("map.png", class: "feature-image") %>
+          <h4 class="title-text">Google Maps API</h4>
+          <p class="sub-text">Google Maps APIを実装しているので自分の好きなスポットにピンを立てて共有可能。</p>
+        </div>
+        <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="300ms">
+          <%= image_tag("image.png", class: "feature-image") %>
+          <h4 class="title-text">画像投稿</h4>
+          <p class="sub-text">ActiveStorageを実装しており、画像の投稿もできます。１投稿に付き複数登録でき、１枚目が投稿のトップ画像になります。</p>
+        </div>
+        <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="500ms">
+          <%= image_tag("description.png", class: "feature-image") %>
+          <h4 class="title-text">タイトル/説明</h4>
+          <p class="sub-text">投稿にはタイトル、説明が付けられます。目を引くタイトルを付け、そのスポットについて熱く語れます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="feat">
+    <div class="container">
+      <div class="row features">
+        <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="100ms">
+          <%= image_tag("search.png", class: "feature-image") %>
+          <h4 class="title-text">検索機能</h4>
+          <p class="sub-text">Ransackにて検索機能を搭載しています。気になるスポットを検索しましょう。</p>
+        </div>
+        <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="300ms">
+          <%= image_tag("like.png", class: "feature-image") %>
+          <h4 class="title-text">いいね機能</h4>
+          <p class="sub-text">非同期処理によるいいね機能があります。お気に入りの投稿にいいねしましょう。</p>
+        </div>
+        <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="500ms">
+          <%= image_tag("comments.png", class: "feature-image") %>
+          <h4 class="title-text">コメント機能</h4>
+          <p class="sub-text">各投稿にコメントを残せます。もし共感できるスポットがあれば語り合いましょう。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center pb-5">
+    <h2 class="title-text pt-5 pb-2">投稿詳細</h2>
+    <p class="sub-text">投稿詳細画面を開くと、登録された座標を元にマーカー設置されたマップが表示されます。</p>
+    <%= image_tag("post-show-sample.png") %>
+  </div>
+
 </section>
 <!-- Footer-->
 <footer class="bg-light py-5">
