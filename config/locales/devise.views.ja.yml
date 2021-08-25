@@ -19,6 +19,7 @@ ja:
               confirmation: "が内容とあっていません。"
     attributes:
       user:
+        avatar: "アバター"
         current_password: "現在のパスワード"
         name: "アカウント名"
         email: "メールアドレス"

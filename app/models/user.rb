@@ -11,11 +11,27 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
+  validate :validate_avatar
 
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guest"
     end
+  end
+
+  private
+
+  def validate_avatar
+    return unless avatar.attached?
+    if avatar.blob.byte_size > 5.megabytes
+      errors.add(:avatar, ('は1つのファイル5MB以内にしてください'))
+    elsif !image?
+      errors.add(:avatar, ('はjpegまたはpng形式でアップロードしてください'))
+    end
+  end
+
+  def image?
+    %w[image/jpg image/jpeg image/png].include?(avatar.blob.content_type)
   end
 end
