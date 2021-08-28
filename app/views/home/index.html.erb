@@ -40,7 +40,7 @@
   <div class="container py-5">
     <div class="row col">
       <% @roads_latest3.each do |road| %>
-        <div class="col-xl-4 mb-4">
+        <div class="col-sm-4 mb-4">
           <div class="card-group display: fixed;" >
             <div class="card d-flex" style="width: 18rem;">
             
@@ -117,7 +117,7 @@
   <div class="text-center pb-5">
     <h2 class="title-text pt-5 pb-2">投稿詳細</h2>
     <p class="sub-text">投稿詳細画面を開くと、登録された座標を元にマーカー設置されたマップが表示されます。</p>
-    <%= image_tag("post-show-sample.png") %>
+    <%= image_tag("post-show-sample.png", class: "col-xs-4 col-md-6 col-lg-4") %>
   </div>
 
 </section>
