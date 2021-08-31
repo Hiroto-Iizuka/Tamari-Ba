@@ -29,12 +29,15 @@
 
 
 <script>
+
 let mapInstance = {};
 let marker;
-const tokyoStationLat = 35.6809591
-const tokyoStationLng = 139.7673068
+let geocoder;
+const tokyoStationLat = 35.6809591;
+const tokyoStationLng = 139.7673068;
 
 function initMap() {
+  geocoder = new google.maps.Geocoder();
   // 初期マップ
   mapInstance = new google.maps.Map(document.getElementById('map'), {
     center: {lat: tokyoStationLat, lng: tokyoStationLng},
@@ -73,8 +76,6 @@ function deleteMarker() {
   }
   marker = null;
 }
-
-let geocoder
 
 function searchArea() {
   // 検索フォームの入力内容を取得
