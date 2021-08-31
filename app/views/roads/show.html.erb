@@ -13,7 +13,7 @@
           <%= @road.description %>
           <% if current_user.id == @road.user_id %>
             <p>
-              <%= link_to "編集", edit_road_path(@road), class: "btn btn-outline-warning btn-sm" %>
+              <%= link_to "編集", edit_road_path(@road), data: {"turbolinks"=>false}, class: "btn btn-outline-warning btn-sm" %>
               <%= link_to "削除", road_path(@road), class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "削除しますか?" } %>
             </p>
           <% end %>
@@ -64,6 +64,7 @@
 
 
 <script>
+
 let mapInstance
 let geocoder
 let marker
@@ -72,7 +73,6 @@ const savedLat = <%= @road.latitude %>
 const savedLng = <%= @road.longitude %>
 
 function initMap() {
-  geocoder = new google.maps.Geocoder();
   // 保存された座標データが中心に来るように設定
   mapInstance = new google.maps.Map(document.getElementById('map'), {
     center: {lat: savedLat, lng: savedLng},
@@ -125,6 +125,5 @@ function codeAddress() {
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
 

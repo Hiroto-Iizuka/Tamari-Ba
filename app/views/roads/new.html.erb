@@ -29,10 +29,12 @@
 
 
 <script>
+
 let mapInstance = {};
 let marker;
-const tokyoStationLat = 35.6809591
-const tokyoStationLng = 139.7673068
+let geocoder;
+const tokyoStationLat = 35.6809591;
+const tokyoStationLng = 139.7673068;
 
 function initMap() {
   geocoder = new google.maps.Geocoder();
@@ -75,8 +77,6 @@ function deleteMarker() {
   marker = null;
 }
 
-let geocoder
-
 function searchArea() {
   // 検索フォームの入力内容を取得
   let inputAddress = document.getElementById('address').value;
@@ -94,7 +94,6 @@ function searchArea() {
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
 <style>
 #map {
