@@ -35,7 +35,6 @@ const tokyoStationLat = 35.6809591
 const tokyoStationLng = 139.7673068
 
 function initMap() {
-  geocoder = new google.maps.Geocoder();
   // 初期マップ
   mapInstance = new google.maps.Map(document.getElementById('map'), {
     center: {lat: tokyoStationLat, lng: tokyoStationLng},
@@ -94,7 +93,6 @@ function searchArea() {
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
 <style>
 #map {
