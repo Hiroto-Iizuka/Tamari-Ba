@@ -1,12 +1,14 @@
 <div class="container mx-auto py-5">
   <h3 class="text-center">新規投稿</h3>
 
-  <div class="text-center mt-3">
-    <input id="address" class="area-search" type="textbox" placeholder="検索してマップを移動できます">
-    <input type="button" value="検索" onclick="searchArea()">
+  <div class="d-flex justify-content-center mt-5">
+    <dl class="searchbox">
+      <dt><input id="address" class="search-field" type="textbox" placeholder="検索してマップを移動できます"></dt>
+      <dd><input type="button" value="検索" onclick="searchArea()" class="search-btn"></dd>
+    </dl>
   </div>
 
-  <p class="text-center mt-5">登録したい箇所をクリックして、マーカーを設置してください。(1つまで)</p>
+  <p class="text-center">登録したい箇所をクリックして、マーカーを設置してください。(1つまで)</p>
 
   <div id="map" class="mx-auto mt-3"></div>
 
