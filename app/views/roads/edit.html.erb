@@ -1,13 +1,15 @@
 <div class="container py-5 mx-auto">
   <h3 class="text-center">編集</h3>
 
-  <div class="search text-center mt-3">
-    <input id="address" class="area-search" type="textbox" placeholder="検索してマップを移動できます">
-    <input class="mx-auto" type="button" value="検索" onclick="searchArea()">
+  <div class="d-flex justify-content-center mt-5">
+    <dl class="searchbox">
+      <dt><input id="address" class="search-field" type="textbox" placeholder="検索してマップを移動できます"></dt>
+      <dd><input type="button" value="検索" onclick="searchArea()" class="search-btn"></dd>
+    </dl>
   </div>
 
 
-  <p class="text-center mt-5">マーカーを更新したい場合は設置したい場所をクリックしてください。</p>
+  <p class="text-center">マーカーを更新したい場合は設置したい場所をクリックしてください。</p>
   <div id="map" class="mx-auto mt-3"></div>
 
   <%= form_with model: @road, local: true do |f| %>
