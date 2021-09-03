@@ -10,7 +10,7 @@
 
 
   <p class="text-center">マーカーを更新したい場合は設置したい場所をクリックしてください。</p>
-  <div id="map" class="mx-auto mt-3"></div>
+  <div id="map" class="map mx-auto mt-3"></div>
 
   <%= form_with model: @road, local: true do |f| %>
     <div class="d-flex mt-3">
@@ -123,10 +123,3 @@ function searchArea() {
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-
-<style>
-#map {
-  height: 600px;
-  width: 600px;
-}
-</style>
