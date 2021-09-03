@@ -141,6 +141,13 @@ dl.searchbox dd{
   width: 300px;
 }
 
+@media only screen and (max-width:  640px) { 
+  .showmap {
+      width: 100%;
+    height: 300px;
+  }
+}
+
 a {
   color: #002550;
 }
