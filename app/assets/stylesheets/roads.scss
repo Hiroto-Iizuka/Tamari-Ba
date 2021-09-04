@@ -127,29 +127,6 @@ dl.searchbox dd{
   border: 1.5px solid #002550;
 }
 
-
-// show
-
-.show-map {
-  width: 300px;
-  height: 300px;
-}
-
-a {
-  color: #002550;
-}
-
-.comment-field {
-  resize: none;
-  width: 330px;
-  height: 160px;
-}
-
-.comment-btn {
-  margin-top: 10px;
-  text-align: right;
-}
-
 // new
 
 .area-search {
@@ -179,13 +156,88 @@ a {
   }
 }
 
-
 @media only screen and (max-width:  640px) { 
   .map {
-      width: 100%;
+    width: 100%;
     height: 450px;
   }
 
+  .comment-field {
+    width: 250px;
+    height: 160px;
+  }
+}
+
+
+// show
+
+.show-map {
+  width: 600px;
+  height: 300px;
+}
+
+a {
+  color: #002550;
+}
+
+.comment-field {
+  resize: none;
+  width: 330px;
+  height: 160px;
+}
+
+.comment-btn {
+  margin-top: 10px;
+  text-align: right;
+}
+
+
+.contents {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contents img {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.box1 {
+  width: 55%;
+  margin: auto;
+  vertical-align: text-top;
+}
+
+.box2 {
+  width: 45%;
+  margin: auto .5rem;
+}
+
+.show-content {
+  display: inline-block; 
+  vertical-align: top;
+}
+
+@media screen and (max-width: 767px) {
+  .flexbox {
+      display: block;
+  }
+  .flexbox .box1 {
+      width: 100%;
+      margin: 0 auto;
+  }
+  .flexbox .box2 {
+      width: 100%;
+      margin: 0 auto;
+  }
 
   .show-map {
     width: 100%;
