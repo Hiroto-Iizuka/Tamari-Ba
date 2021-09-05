@@ -1,9 +1,9 @@
-<div class="container py-5">
+<div class="show-container py-5">
   <div class="flexbox">
-    <div class="box1">
+    <div class="map-box">
       <div id="map" class="show-map"></div>
     </div>
-    <div class="box2">
+    <div class="content-box">
       <div class="show-content">
         <h2><%= @road.title %></h2>
         <%= render 'road', {road: @road} %>
@@ -31,33 +31,30 @@
       <% end %>
   </div>
 
-  <div class="container mt-5">
-    <div class="d-flex justify-content-center flex-sm-column">
-      <div class="col-sm-4">
-        <h4>コメント一覧</h4>
-          <% @comments.each do |c| %>
-              <a href="/users/<%= @road.user.id %>"><%= c.user.name %>: </a>
-              <%= c.content %>
-              <hr>
-          <% end %>
-      </div>
+  <div class="flexbox">
+    <div class="comment-box">
+      <h4>コメント一覧</h4>
+      <% @comments.each do |c| %>
+          <a href="/users/<%= @road.user.id %>"><%= c.user.name %>: </a>
+          <%= c.content %>
+          <hr>
+      <% end %>
+    </div>
 
-      <div class="col-sm-4">
-        <%= form_for [@road, @comment] do |f| %>
-          <%= f.text_area :content, class: "comment-field" %>
-          <br>
-          <div class="text-right">
-            <%= f.submit 'コメントする', class: "comment-btn btn btn-outline-warning" %>
-          </div>
-        <% end %>
-      </div>
+    <div class="box2">
+      <%= form_for [@road, @comment], html: { class: "comment-form" } do |f| %>
+        <%= f.text_area :content, class: "comment-field" %>
+        <br>
+        <div>
+          <%= f.submit 'コメントする', class: "comment-btn btn btn-outline-warning" %>
+        </div>
+      <% end %>
     </div>
   </div>
 
-  <div class="text-center mt-5">
-    <p><%= link_to "投稿一覧へ", roads_path, class: "btn btn-outline-primary submit-btn" %></p>
-  </div>
-
+    <div class="text-center py-5">
+      <p><%= link_to "投稿一覧へ", roads_path, class: "to-index-btn btn btn-outline-primary submit-btn" %></p>
+    </div>
 </div>
 
 
