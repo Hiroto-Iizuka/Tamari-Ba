@@ -1,65 +1,63 @@
-<div class="container py-5">
-  <div class="container">
-    <div class="d-flex justify-content-center">
-      <div class="row">
-        <div class="col-md-4.offset-md-4 mx-auto">
-          <div id="map" class="show-map"></div>
-        </div>
-        <div class="col">
-          <h2><%= @road.title %></h2>
-          <%= render 'road', {road: @road} %>
-          <p>by <%= link_to "#{@road.user.name}", user_path(@road.user) %></p>
-          <p><%= @road.created_at.strftime('%Y/%m/%d') %></p>
-          <%= @road.description %>
-          <% if current_user.id == @road.user_id %>
-            <p>
-              <%= link_to "編集", edit_road_path(@road), data: {"turbolinks"=>false}, class: "btn btn-outline-warning btn-sm" %>
-              <%= link_to "削除", road_path(@road), class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "削除しますか?" } %>
-            </p>
-          <% end %>
-        </div>
+<div class="show-container">
+  <div class="contents">
+    <div class="map-wrapper">
+      <div class="map-box">
+        <div id="map" class="show-map"></div>
       </div>
-    </div>
-  </div>
-
-  <div class="container mt-5">
-    <div id="roads" data-roads="<%= @roads.to_json %>"></div>
-      <% if @road.road_images.attached? %>
-        <div class="d-flex">
-          <% @road.road_images.each do |image| %>
-            <%= image_tag image, width: '35%', height: '35%' %>
-          <% end %>
-        </div>
-      <% end %>
-  </div>
-
-  <div class="container mt-5">
-    <div class="d-flex justify-content-center">
-      <div class="col-sm-4">
-        <h4>コメント一覧</h4>
-          <% @comments.each do |c| %>
-              <a href="/users/<%= @road.user.id %>"><%= c.user.name %>: </a>
-              <%= c.content %>
-              <hr>
-          <% end %>
-      </div>
-
-      <div class="col-sm-4">
-        <%= form_for [@road, @comment] do |f| %>
-          <%= f.text_area :content, class: "comment-field" %>
-          <br>
-          <div class="text-right">
-            <%= f.submit 'コメントする', class: "comment-btn btn btn-outline-warning" %>
-          </div>
+      <div class="content-box">
+        <h2><%= @road.title %></h2>
+        <%= render 'road', {road: @road} %>
+        <p>by <%= link_to "#{@road.user.name}", user_path(@road.user) %></p>
+        <p><%= @road.created_at.strftime('%Y/%m/%d') %></p>
+        <%= @road.description %>
+        <% if current_user.id == @road.user_id %>
+          <p>
+            <%= link_to "編集", edit_road_path(@road), data: {"turbolinks"=>false}, class: "btn btn-outline-warning btn-sm" %>
+            <%= link_to "削除", road_path(@road), class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "削除しますか?" } %>
+          </p>
         <% end %>
       </div>
     </div>
   </div>
 
-  <div class="text-center mt-5">
-    <p><%= link_to "投稿一覧へ", roads_path, class: "btn btn-outline-primary submit-btn" %></p>
+  <div class="contents mt-3">
+    <div id="roads" data-roads="<%= @roads.to_json %>"></div>
+      <% if @road.road_images.attached? %>
+        <div class="road-images">
+          <% @road.road_images.each do |image| %>
+            <div class="road-image-item">
+              <%= image_tag image, width: '35%', height: '35%' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 
+  <div class="comment-wrapper">
+    <div class="comment-box">
+      <h4>コメント一覧</h4>
+      <% @comments.each do |c| %>
+          <a href="/users/<%= @road.user.id %>"><%= c.user.name %>: </a>
+          <%= c.content %>
+          <hr>
+      <% end %>
+    </div>
+
+    <div class="commentform-box">
+      <%= form_for [@road, @comment], html: { class: "comment-form" } do |f| %>
+        <%= f.text_area :content, class: "comment-field" %>
+        <br>
+        <div class="comment-submit-btn">
+          <%= f.submit 'コメントする', class: "comment-btn btn btn-outline-warning" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+    <div class="text-center py-5">
+      <p><%= link_to "投稿一覧へ", roads_path, class: "to-index-btn btn btn-outline-primary submit-btn" %></p>
+    </div>
 </div>
 
 
