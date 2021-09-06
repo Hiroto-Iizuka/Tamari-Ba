@@ -12,79 +12,40 @@
     <%= link_to "新規投稿", new_road_path, class: "btn btn-outline-primary submit-btn mb-3", data: {"turbolinks"=>false} %>
   </div>
 
-        <div class="card-wrapper">
-          <% @roads.each do |road| %>
+  <div class="card-wrapper">
+    <% @roads.each do |road| %>
 
-            <div class="card">
-              <div class="card-image">
-                <% if road.road_images.attached? %>
-                  <%= link_to image_tag(road.road_images.first, class: "show-img-link", data: {"turbolinks"=>false}), road_path(road) %>
-                <% else %>
-                  <%= link_to image_tag("noimage-road.png", class:"show-img-link", data: {"turbolinks"=>false}), road_path(road) %>
-                <% end %>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title"><%= link_to "#{road.title}", road_path(road), {class: "show-link", data: {"turbolinks"=>false}} %></h5>
-                <p class="card-content"><%= road.description.truncate(15, omission: '...') %></p> 
-              </div>
-
-              <div class="text-right mr-3">
-                <%= render partial: 'road', locals: {road: road} %>
-              </div>
-              <div class="d-flex justify-content-between mx-3">
-                <div>
-                  <% if current_user.id == road.user_id %>
-                    <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm", data: {"turbolinks"=>false} %>
-                    <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
-                  <% end%> 
-                </div>
-                <p class="user-name">by <%= link_to "#{road.user.name}", user_path(road.user), {class: "user-link"} %></p>
-              </div>
-
-            </div>
+      <div class="card">
+        <div class="card-image">
+          <% if road.road_images.attached? %>
+            <%= link_to image_tag(road.road_images.first, class: "show-img-link", data: {"turbolinks"=>false}), road_path(road) %>
+          <% else %>
+            <%= link_to image_tag("noimage-road.png", class:"show-img-link", data: {"turbolinks"=>false}), road_path(road) %>
           <% end %>
         </div>
 
-
-
-
-  <div class="row col mx-auto">
-    <% @roads.each do |road| %>
-      <div class="col-sm-4 mb-4">
-
-        <div class="card-group display: fixed;" >
-          <div class="card d-flex" style="width: 18rem;">
-          
-            <div class="card-img-top">
-              <% if road.road_images.attached? %>
-                <%= link_to image_tag(road.road_images.first, class: "show-img-link", data: {"turbolinks"=>false}), road_path(road) %>
-              <% else %>
-                <%= link_to image_tag("noimage-road.png", class:"show-img-link", data: {"turbolinks"=>false}), road_path(road) %>
-              <% end %>
-            </div>  
-
-            <div class="card-body mb-4">
-              <h5 class="card-title"><%= link_to "#{road.title}", road_path(road), {class: "show-link", data: {"turbolinks"=>false}} %></h5>
-              <p class="card-content"><%= road.description.truncate(15, omission: '...') %></p> 
-            </div>
-            <div class="text-right mr-3">
-              <%= render partial: 'road', locals: {road: road} %>
-            </div>
-            <div class="d-flex justify-content-between mx-3">
-              <div>
-                <% if current_user.id == road.user_id %>
-                  <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm", data: {"turbolinks"=>false} %>
-                  <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
-                <% end%> 
-              </div>
-              <p class="user-name">by <%= link_to "#{road.user.name}", user_path(road.user), {class: "user-link"} %></p>
-            </div>
-          </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to "#{road.title}", road_path(road), {class: "show-link", data: {"turbolinks"=>false}} %></h5>
+          <p class="card-content"><%= road.description.truncate(30, omission: '...') %></p> 
         </div>
+
+        <div class="text-right mr-3">
+          <%= render partial: 'road', locals: {road: road} %>
+        </div>
+        <div class="d-flex justify-content-between mx-3">
+          <div>
+            <% if current_user.id == road.user_id %>
+              <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm", data: {"turbolinks"=>false} %>
+              <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
+            <% end%> 
+          </div>
+          <p class="user-name">by <%= link_to "#{road.user.name}", user_path(road.user), {class: "user-link"} %></p>
+        </div>
+
       </div>
     <% end %>
   </div>
+
   <%= paginate @roads %>
 </div>
 
