@@ -54,16 +54,25 @@ input[type="password"] {
 }
 
 .forgot-link {
-  font-size: 10px;
+  font-size: 16px;
   border-bottom: 1px solid;
+  color: #002550;
+}
+
+.signup-link {
+  font-size: 16px;
+  border-bottom: 1px solid;
+  color: #002550;
+}
+
+.signin-link {
+  font-size: 16px;
+  border-bottom: 1px solid;
+  color: #002550;
 }
 
 .user-card {
   height: 200px;
-}
-
-p {
-  font-size: 12px;
 }
 
 .user-show-btn {
