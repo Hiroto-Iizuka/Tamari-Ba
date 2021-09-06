@@ -63,7 +63,7 @@
 
 ## できること
 ### 1. トップページ
-![スクリーンショット 2021-08-23 20 53 48](https://user-images.githubusercontent.com/69702983/130442882-1876d3c2-d021-4798-b48c-4179305fb186.png)
+![Tamari-Ba_LP](https://user-images.githubusercontent.com/69702983/132228489-62400422-b09d-41ad-9e99-76674f8c439a.png)
 
 - ログイン状態に応じて、リンクボタンを表示分けさせています。
   - 非ログイン状態：ログイン/ゲストログイン
@@ -81,14 +81,14 @@ https://user-images.githubusercontent.com/69702983/130447706-f16b1bd9-9f30-44c6-
 - その他にも画像保存、タイトル、説明文を入力することが可能です。
 
 ### 3. 投稿一覧
-![アプリ-投稿一覧](https://user-images.githubusercontent.com/69702983/130445709-5383cc3e-072e-4203-85de-19bf92bb0ca3.png)
+![投稿一覧](https://user-images.githubusercontent.com/69702983/132227891-ad2e759e-3886-4070-b690-278dc40d4c1c.png)
 
 - 投稿一覧を見ることができます。
 - 検索機能があるので、投稿を検索することができます。
 - 15投稿でページネーションが適用されます。
 
 ### 4. 投稿詳細
-![スクリーンショット 2021-09-06 22 40 59](https://user-images.githubusercontent.com/69702983/132226202-b4da0036-8464-4481-9aab-1d7498e974e7.png)
+![投稿詳細](https://user-images.githubusercontent.com/69702983/132227905-ffa6ec0f-22bc-43ae-9d0e-5d0f43424597.png)
 
 - 保存された座標を元に地図上にマーカーを表示します。
 - 投稿者本人がログインしている場合には編集/削除ボタンが表示され実行できます。
@@ -114,7 +114,7 @@ https://user-images.githubusercontent.com/69702983/130447706-f16b1bd9-9f30-44c6-
 - [【CircleCI】AWSにデプロイしたRails6アプリをCircleCIで自動デプロイ](https://qiita.com/vit_udon_husqy/items/46b48a4cd825a8e056cd)
 - [【Amazon Linux2】【Rails】Nginxをpumaのunixドメインソケットでリバースプロキシする設定](https://qiita.com/vit_udon_husqy/items/8b488fd552a3a7a1ac64)
 - [【Docker】Rails6/MySQLのコンテナを作って開発環境を構築](https://qiita.com/vit_udon_husqy/items/d5e97119fbe69607a5b8)
-- [MySQLが起動失敗による500エラーの解消](https://qiita.com/vit_udon_husqy/items/7d8c81a539c8bcdfe9fc
+- [MySQLが起動失敗による500エラーの解消](https://qiita.com/vit_udon_husqy/items/7d8c81a539c8bcdfe9fc)
 
 ## ER図
 ![ポートフォリオER図](https://user-images.githubusercontent.com/69702983/130440332-86dde1df-99c4-4bcb-8550-358d5d629be6.png)
