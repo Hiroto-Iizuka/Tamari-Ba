@@ -43,6 +43,7 @@ class RoadsController < ApplicationController
       flash[:success] = "投稿を編集しました"
       redirect_to roads_path
     else
+      flash[:alert] = "更新に失敗しました"
       render :edit
     end
   end
