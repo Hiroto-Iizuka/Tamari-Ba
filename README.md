@@ -81,11 +81,11 @@
 - その他にも画像保存、タイトル、説明文を入力することが可能です。
 
 ### 3. 投稿一覧
-![投稿一覧](https://user-images.githubusercontent.com/69702983/132227891-ad2e759e-3886-4070-b690-278dc40d4c1c.png)
+![投稿一覧](https://user-images.githubusercontent.com/69702983/132536201-b1ad4705-68e7-488b-84d5-7d1b8d3544b6.gif)
 
 - 投稿一覧を見ることができます。
 - 検索機能があるので、投稿を検索することができます。
-- 15投稿でページネーションが適用されます。
+- 9投稿でページネーションが適用されます。
 
 ### 4. 投稿詳細
 ![投稿詳細](https://user-images.githubusercontent.com/69702983/132227905-ffa6ec0f-22bc-43ae-9d0e-5d0f43424597.png)
