@@ -1,4 +1,5 @@
 class RoadsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
   PER_PAGE = 15
 
   def index
@@ -57,5 +58,12 @@ class RoadsController < ApplicationController
   private
     def road_params
       params.require(:road).permit(:title, :description, :latitude, :longitude, :content, road_images: []).merge(user_id: current_user.id)
+    end
+
+    def correct_user
+      @road = Road.find(params[:id])
+        unless @road.user.id == current_user.id
+          redirect_to roads_path
+        end
     end
 end
