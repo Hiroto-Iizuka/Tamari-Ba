@@ -1,6 +1,6 @@
 class RoadsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
-  PER_PAGE = 15
+  PER_PAGE = 9
 
   def index
     @q = Road.ransack(params[:q])

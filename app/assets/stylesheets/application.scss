@@ -25,3 +25,19 @@ p {
   color: #002550;
 }
 
+.page-link {
+  color: #002550;
+  border-color: #002550;
+  &:hover {
+    color: #002550;
+    background-color: #FFED00;
+    border:1px solid #002550;
+  }
+}
+
+.page-item.active .page-link {
+  background-color: #002550;
+  color: #fff;
+  border-color: #002550;
+  
+}
