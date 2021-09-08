@@ -63,7 +63,7 @@
 
 ## できること
 ### 1. トップページ
-![Tamari-Ba_LP](https://user-images.githubusercontent.com/69702983/132228489-62400422-b09d-41ad-9e99-76674f8c439a.png)
+![LP紹介](https://user-images.githubusercontent.com/69702983/132439251-eb65cdcb-5656-491f-9252-c21ed7865b1e.gif)
 
 - ログイン状態に応じて、リンクボタンを表示分けさせています。
   - 非ログイン状態：ログイン/ゲストログイン
@@ -73,7 +73,7 @@
 - 投稿詳細イメージを表示
 
 ### 2. 新規投稿
-https://user-images.githubusercontent.com/69702983/130447706-f16b1bd9-9f30-44c6-926e-0031d18b710d.mov
+![新規投稿](https://user-images.githubusercontent.com/69702983/132229729-aab9b2c8-dd53-49ab-aa06-06c60de3bb6d.gif)
 
 - マップの検索でマップ表示範囲を移動できます。
 - 任意の箇所をクリックすることでマーカーを設置できます。
