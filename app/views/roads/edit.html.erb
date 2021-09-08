@@ -19,14 +19,13 @@
         経度: <%=f.text_field :longitude, class: "latlng-field mx-auto" %>
       </p>
     </div>
-
       <% if @road.road_images.present? %>
         <p class="text-center">現在投稿されている画像(削除するものはチェックしてください)</p>
         <% @road.road_images.each do |image| %>
-        <p class="d-flex justify-content-center">
-          <%= f.check_box :road_image_ids, {multiple: true}, image.id, false %>
-          <%= image_tag image, width: '300px', height: '200px' %>
-        </p>
+          <p class="d-flex justify-content-center">
+            <%= f.check_box :road_image_ids, {multiple: true}, image.id, false %>
+            <%= image_tag image, width: '300px', height: '200px' %>
+          </p>
         <% end %>
       <% end %>
     
