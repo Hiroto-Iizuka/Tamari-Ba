@@ -32,14 +32,14 @@ class RoadsController < ApplicationController
   end
 
   def update
-    road = Road.find(params[:id])
+    @road = Road.find(params[:id])
     if params[:road][:road_image_ids]
       params[:road][:road_image_ids].each do |road_image_id|
         image = road.road_images.find(road_image_id)
         image.purge
       end
     end
-    if road.update(road_params)
+    if @road.update(road_params)
       flash[:success] = "投稿を編集しました"
       redirect_to roads_path
     else
