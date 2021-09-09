@@ -73,7 +73,7 @@
 - 投稿詳細イメージを表示
 
 ### 2. 新規投稿
-![新規投稿](https://user-images.githubusercontent.com/69702983/132229729-aab9b2c8-dd53-49ab-aa06-06c60de3bb6d.gif)
+![新規投稿](https://user-images.githubusercontent.com/69702983/132681648-9c113fa7-3cda-42d6-9241-c4b6be507fc3.gif)
 
 - マップの検索でマップ表示範囲を移動できます。
 - 任意の箇所をクリックすることでマーカーを設置できます。
