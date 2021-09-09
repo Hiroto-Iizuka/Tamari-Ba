@@ -26,6 +26,10 @@
       <p><%= f.file_field :road_images, multiple: true, class:"mt-4" %></p>
       <%= f.submit "投稿", class: "btn btn-outline-primary submit-btn my-5" %>
     </div>
+
+    <div class="text-center">
+      <p><%= link_to "投稿キャンセル", roads_path, class: "to-index-btn btn btn-outline-primary submit-btn" %></p>
+    </div>
   <% end %>
 </div>
 
