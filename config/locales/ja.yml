@@ -19,7 +19,7 @@ ja:
         road: 投稿
   time:
     formats:
-      default: "%Y年%-m月%-d日(%a) %-H時%-M分%-S秒"
+      default: "%Y/%m/%d"
   views:
     pagination:
       first: "&laquo; 最初"
