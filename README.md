@@ -81,7 +81,7 @@
 - その他にも画像保存、タイトル、説明文を入力することが可能です。
 
 ### 3. 投稿一覧
-![投稿一覧](https://user-images.githubusercontent.com/69702983/132536201-b1ad4705-68e7-488b-84d5-7d1b8d3544b6.gif)
+![投稿一覧](https://user-images.githubusercontent.com/69702983/132880441-388e445b-0baf-4759-a4cf-7ed48643edb3.gif)
 
 - 投稿一覧を見ることができます。
 - 検索機能があるので、投稿を検索することができます。
