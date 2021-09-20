@@ -35,7 +35,7 @@
         </div>
         <div class="d-flex justify-content-between mx-3">
           <div>
-            <% if current_user.id == road.user_id %>
+            <% if current_user.id == road.user_id || current_user.admin == true %>
               <%= link_to "編集", edit_road_path(road), class: "btn btn-outline-warning btn-sm", data: {"turbolinks"=>false} %>
               <%= link_to "削除", road_path(road), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "削除しますか？"} %>
             <% end%> 
