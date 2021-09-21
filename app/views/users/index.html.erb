@@ -3,34 +3,37 @@
 
   <div class="user-card-wrapper">
     <% @users.each do |user| %>
+      <% if user.admin == true %>
+        <% next %>
+      <% else %>
+        <div class="card user-card">
+          <div class="user-card-image">
+            <% if user.avatar.attached? %>
+              <%= link_to image_tag(user.avatar, class: "user-show-img-link"), user_path(user) %>
+            <% else %>
+              <%= link_to image_tag("noimage.png", class: "user-show-img-link"), user_path(user)  %>
+            <% end %>
 
-      <div class="card user-card">
-        <div class="user-card-image">
-          <% if user.avatar.attached? %>
-            <%= link_to image_tag(user.avatar, class: "user-show-img-link"), user_path(user) %>
-          <% else %>
-            <%= link_to image_tag("noimage.png", class: "user-show-img-link"), user_path(user)  %>
-          <% end %>
+            <div class="user-card-body">
+              <div class="user-card-title">
+                <p>ユーザー名: <%= user.name %></p>
+                <% if user.bike_name == nil %>
+                  <p>バイク: ------</p>
+                <% else %>
+                  <p>バイク: <%= user.bike_name %></p>
+                <% end %>
 
-          <div class="user-card-body">
-            <div class="user-card-title">
-              <p>ユーザー名: <%= user.name %></p>
-              <% if user.bike_name == nil %>
-                <p>バイク: ------</p>
-              <% else %>
-                <p>バイク: <%= user.bike_name %></p>
-              <% end %>
-
-              <% if user.prefecture_id == nil %>
-                <p>都道府県: ------</p>
-              <% else %>
-                <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
-              <% end %>
-              <%= link_to "詳細", user_path(user.id), class: "btn btn-primary user-show-btn" %>
+                <% if user.prefecture_id == nil %>
+                  <p>都道府県: ------</p>
+                <% else %>
+                  <p>都道府県: <%= @prefectures.find(user.prefecture_id).name %></p>
+                <% end %>
+                <%= link_to "詳細", user_path(user.id), class: "btn btn-primary user-show-btn" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
