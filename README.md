@@ -63,7 +63,7 @@
 
 ## できること
 ### 1. トップページ
-![LP紹介](https://user-images.githubusercontent.com/69702983/132439251-eb65cdcb-5656-491f-9252-c21ed7865b1e.gif)
+![Tamari-Ba-LP](https://user-images.githubusercontent.com/69702983/134466714-09b905aa-fd36-4600-9e81-b0c1b2fcd77c.gif)
 
 - ログイン状態に応じて、リンクボタンを表示分けさせています。
   - 非ログイン状態：ログイン/ゲストログイン
