@@ -8,9 +8,10 @@ services:
       - '80:80'
     volumes:
       - ~/git/github/Tamari-Ba:/var/www/app/
-    tty: true
     depends_on:
       - db
+    tty: true
+    stdin_open: true
   db:
     container_name: tamariba-db
     build: ./mysql/
