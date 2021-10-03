@@ -3,7 +3,7 @@
 
   <div class="text-center">
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-class" }) do |f| %>
       <div class="field my-5 login-form mx-auto">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
@@ -17,7 +17,6 @@
         <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
         <br>
         <%= link_to "パスワードを忘れた場合", new_user_password_path, class: "forgot-link" %>
-
       </div>
 
       <% if devise_mapping.rememberable? %>
