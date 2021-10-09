@@ -61,6 +61,12 @@ http://dev.rider-no-tamari-ba.com/
 - DB login
 
 ```
-docker exec -it tamariba-app bash
-mysql -u root -h db -p
+$ docker exec -it tamariba-app bash
+$ mysql -u root -h db -p
+```
+
+- Watch Log
+
+```
+$ docker-compose run --rm app tail -f log/development.log
 ```
