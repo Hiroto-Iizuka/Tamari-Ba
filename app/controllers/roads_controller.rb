@@ -4,7 +4,7 @@ class RoadsController < ApplicationController
 
   def index
     @q = Road.ransack(params[:q])
-    @roads = @q.result.includes(:user, :likes).page(params[:page]).per(PER_PAGE).order(:created_at).with_attached_road_images
+    @roads = @q.result.includes(:user, :likes).page(params[:page]).per(PER_PAGE).order(created_at: "DESC").with_attached_road_images
   end
 
   def show
